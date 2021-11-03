@@ -1,5 +1,5 @@
 /** se define la clase */
-class Bomba extends GameObject{
+class Bomba extends FrameObject{
   
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
@@ -8,14 +8,33 @@ class Bomba extends GameObject{
   /**------Zona de constructores--------*/
   
   public Bomba(){
+    this.sprite = loadImage("Data/Sprites/Bomba/bomba.png");
+    this.posicion= new PVector(random(20,width-20),-50);
+    this.velocidad= new PVector(0,3);
+    this.widthFrame= 38;
+    this.heightFrame=66;
+    this.posXFrame=1;
+    this.posYFrame=0;
   }
   
 
   /*--------Zona de operaciones-------*/
  /** se definen las operaciones a realizar */
-  public void display(){
+  public void display(int p){
+    if(this.estado != false){
+    sprite.resize(150,66);
+    image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);
+    }
   }
   public void mover(){
+    this.posicion.add(this.velocidad);
+    if(posXFrame<3){
+      posXFrame++;
+    }
+    else{
+      posXFrame=0;
+    }
+    display(posXFrame);
   }
   public void explotar(Jefe jefe){
   }
