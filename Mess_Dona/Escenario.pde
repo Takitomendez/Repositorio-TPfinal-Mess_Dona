@@ -9,12 +9,17 @@ class Escenario{
   /**-------Zona de Contructores-----*/
   
   public Escenario(){
-  }
+    imagen= loadImage("Data/Sprites/Escenario/fondo-selva.gif");
+    imagen.resize(width,height);
   
+  }
+  public void mostrarEscenario(){
+  background(imagen);
+  }
  /*--------Zona de operaciones-------*/
  /** se definen las operaciones a realizar */
  public void display(){
- 
+   
  }
  public void mostrarPuntaje(Dron dron){
  
