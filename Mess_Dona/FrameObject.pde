@@ -10,9 +10,8 @@ class FrameObject extends GameObject{
   }
   /**-------Zona de metodos---------*/
   public void display(){
-    imageMode(CENTER);
-    image(this.sprite,this.posicion.x,this.posicion.y,this.widthFrame,this.heightFrame);
-    sprite.resize(61,115);
+
+    
 
   }
   /**---------Metodos Accesores---------*/

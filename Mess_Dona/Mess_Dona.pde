@@ -1,5 +1,5 @@
 Dron dron;
-int tiempoBomba =10;
+int tiempoBomba =15;
 int contador=1;
 private ListaBombas listaBombas;
 /** Se establece la configuracion inicial*/
@@ -18,8 +18,8 @@ public void draw() {
     b.display();
     b.mover();
   }
-  if(contador< tiempoBomba){
-    if(contador==tiempoBomba){
+  if(contador<= tiempoBomba){
+    if(contador==tiempoBomba){  
       listaBombas.agregarBomba(new Bomba());
     }
     contador++;

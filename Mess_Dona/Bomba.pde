@@ -10,11 +10,12 @@ class Bomba extends FrameObject{
   public Bomba(){
     this.sprite = loadImage("Data/Sprites/Bomba/bomba.png");
     this.posicion= new PVector(random(20,width-20),-50);
-    this.velocidad= new PVector(0,3);
+    this.velocidad= new PVector(0,20);
     this.widthFrame= 38;
     this.heightFrame=66;
     this.posXFrame=1;
     this.posYFrame=0;
+    this.estado= true;
   }
   
 
@@ -25,6 +26,7 @@ class Bomba extends FrameObject{
     sprite.resize(150,66);
     image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);
     }
+    frameRate(8);
   }
   public void mover(){
     this.posicion.add(this.velocidad);
@@ -35,6 +37,7 @@ class Bomba extends FrameObject{
       posXFrame=0;
     }
     display(posXFrame);
+    
   }
   public void explotar(Jefe jefe){
   }
