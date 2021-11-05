@@ -25,8 +25,11 @@ class Dron extends FrameObject {
     image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
     sprite.resize(61, 115);
   }
-  public void mover() {
-    if (keyPressed & (keyCode == LEFT)) {
+  public void mover(float x) {
+    this.posicion.x=x;
+    
+    
+    /**if (keyPressed & (keyCode == LEFT)) {
       if (posicion.x>widthFrame/2) {
         posicion.x = posicion.x-velocidad.x;
       }
@@ -35,7 +38,7 @@ class Dron extends FrameObject {
       if (posicion.x<width-widthFrame/2) {
         posicion.x = posicion.x+velocidad.x;
       }
-    }
+    }*/
   }
   /* public void desarmar(Bomba bomba, Nivel nivel) {
    boolean isColliding = true;

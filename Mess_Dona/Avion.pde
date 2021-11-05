@@ -1,5 +1,5 @@
 /** se define la clase */
-class Avion extends GameObject{
+class Avion extends FrameObject{
   
   /**------Zona de constructores--------*/
   
@@ -10,7 +10,7 @@ class Avion extends GameObject{
  /** se definen las operaciones a realizar */
   public void display(){
   }
-  public void mover(){
+  public void mover(){ // mueve al avion
   }
   public void explotar (Dron dron){
   }
