@@ -15,6 +15,8 @@ public void setup() {
 public void draw() {
   background (#000000);
   escenario.mostrarEscenario();
+  escenario.mostrarPuntaje(dron);
+  escenario.mostrarVida(dron);
   dron.display();
   dron.mover(mouseX);
   

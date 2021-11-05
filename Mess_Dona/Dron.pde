@@ -15,6 +15,7 @@ class Dron extends FrameObject {
     this.widthFrame = 61;
     this.heightFrame =115;
     this.velocidad= new PVector(20, 0);
+    this.puntaje=0;
   }
 
 
@@ -39,8 +40,8 @@ class Dron extends FrameObject {
         posicion.x = posicion.x+velocidad.x;
       }
     }*/
-  }
-  /* public void desarmar(Bomba bomba, Nivel nivel) {
+  }/**
+   public void desarmar(Bomba bomba, Nivel nivel) {
    boolean isColliding = true;
    if((this.posicion.x+this.widthFrame) <= bomba.getPosicion().x){
    isColliding = false;
@@ -71,7 +72,7 @@ class Dron extends FrameObject {
    }
    
    
-   }**/
+   }*/
   public void devolverBomba(Bomba bomba, Nivel nivel) {
   }
   public void explotar( Avion avion) {
@@ -81,7 +82,7 @@ class Dron extends FrameObject {
   /*--------Metodos accesores---------*/
   /** se colocan los metodos accesores */
 
-  public int getPuntaje() {
+  public int getPuntaje(){
     return this.puntaje;
   }
   public void setPuntaje(int puntaje) {
