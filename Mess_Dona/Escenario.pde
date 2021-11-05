@@ -1,11 +1,8 @@
 /** se define la clase */
 class Escenario{
-  
-  
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
   private PImage imagen;
-  
   /**-------Zona de Contructores-----*/
   
   public Escenario(){

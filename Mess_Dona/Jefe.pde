@@ -1,5 +1,5 @@
 /** se define la clase */
-class Jefe extends GameObject{
+class Jefe extends FrameObject{
   
   
    /* ------Zona de atributos---------*/

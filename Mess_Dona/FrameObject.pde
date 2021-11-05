@@ -11,8 +11,6 @@ class FrameObject extends GameObject{
   /**-------Zona de metodos---------*/
   public void display(){
 
-    
-
   }
   /**---------Metodos Accesores---------*/
   public int getPosXFrame(){

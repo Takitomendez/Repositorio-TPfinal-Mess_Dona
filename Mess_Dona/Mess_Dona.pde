@@ -16,7 +16,7 @@ public void draw() {
   background (#000000);
   escenario.mostrarEscenario();
   dron.display();
-  dron.mover();
+  dron.mover(mouseX);
   
   for(Bomba b:listaBombas.getBombas()){
     b.display();
