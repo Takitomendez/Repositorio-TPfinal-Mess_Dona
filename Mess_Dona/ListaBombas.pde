@@ -23,7 +23,7 @@ class ListaBombas{
   
   
   
-    public void setBombas(List<Bomba> bombas){
+  public void setBombas(List<Bomba> bombas){
     this.bombas=bombas;
   }
   public List<Bomba> getBombas(){
