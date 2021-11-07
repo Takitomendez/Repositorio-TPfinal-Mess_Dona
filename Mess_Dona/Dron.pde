@@ -4,9 +4,6 @@ class Dron extends FrameObject {
 
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
-  private int puntaje;
-  private int vida;
-
 
   /** constructor parametrizado*/
   public Dron() {  
@@ -15,7 +12,6 @@ class Dron extends FrameObject {
     this.widthFrame = 61;
     this.heightFrame =115;
     this.velocidad= new PVector(20, 0);
-    this.puntaje=0;
   }
 
 
@@ -82,17 +78,5 @@ class Dron extends FrameObject {
   /*--------Metodos accesores---------*/
   /** se colocan los metodos accesores */
 
-  public int getPuntaje(){
-    return this.puntaje;
-  }
-  public void setPuntaje(int puntaje) {
-    this.puntaje = puntaje;
-  }
 
-  public int getVida() {
-    return this.vida;
-  }
-  public void setVida(int vida) {
-    this.vida = vida;
-  }
 }

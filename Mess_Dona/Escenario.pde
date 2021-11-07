@@ -72,4 +72,10 @@ class Escenario {
   public void setVida(PImage vida) {
     this.vida = vida;
   }
+   public int getContadorVida() {
+    return this.contadorVida;
+  }
+  public void setContadorVida(int contadorVida) {
+    this.contadorVida = contadorVida;
+  }
 }
