@@ -33,4 +33,5 @@ public void draw() {
   else{
     contador=1;
   }
+ // escenario.mostrarNivel(nivel 2);
 }

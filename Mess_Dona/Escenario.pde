@@ -31,12 +31,12 @@ class Escenario{
  public void mostrarNivel(Nivel nivel){
    imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
    imagen.resize(width,height);
-   if(dron.getPuntaje() == 50){
+   if(dron.getPuntaje() == 15){
     background(imagen);
      textSize(20);
     text("NIVEL 2",width/2,50);
    }
- 
+    dron.puntaje = 0;
  }
    
    
