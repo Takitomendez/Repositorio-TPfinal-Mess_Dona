@@ -1,12 +1,16 @@
+import processing.sound.*;  
+SoundFile sonido;
+
 Dron dron;
-//new comment
 Escenario escenario;
 int tiempoBomba =20;
 int contador=1;
 private ListaBombas listaBombas;
 /** Se establece la configuracion inicial*/
 public void setup() {
-  size(1000, 700);
+  size(1000, 700); 
+  sonido= new SoundFile(this,"metal-slug.mp3");
+  sonido.play();
   dron = new Dron();
   listaBombas = new ListaBombas();
   escenario= new Escenario();
