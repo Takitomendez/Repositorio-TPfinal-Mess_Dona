@@ -16,11 +16,12 @@ public void setup() {
 public void draw() {
   background (#000000);
   escenario.mostrarEscenario();
+  escenario.mostrarNivel();
   escenario.mostrarPuntaje(dron);
   escenario.mostrarVida(dron);
   dron.display();
   dron.mover(mouseX);
-  
+ // escenario.mostrarNivel();
   for(Bomba b:listaBombas.getBombas()){
     b.display();
     b.mover();
