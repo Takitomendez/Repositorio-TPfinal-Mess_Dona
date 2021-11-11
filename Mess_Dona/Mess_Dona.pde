@@ -35,4 +35,5 @@ public void draw() {
   else{
     contador=1;
   }
+
 }

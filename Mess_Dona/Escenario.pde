@@ -1,5 +1,7 @@
-/** se define la clase */
+/** se define la clase */ 
+
 class Escenario {
+
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
   private PImage imagen;
@@ -7,6 +9,8 @@ class Escenario {
   private int puntaje;
   private int contadorVida ;
   /**-------Zona de Contructores-----*/
+
+
 
   public Escenario() {
     this.imagen= loadImage("Data/Sprites/Escenario/fondo-selva.gif");
@@ -48,10 +52,20 @@ class Escenario {
     }*/
   }
   public void mostrarNivel(Nivel nivel) {
-  }
+     imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
+     imagen.resize(width,height); 
+       if(dron.getPuntaje() == 15){
+          background(imagen);
+         textSize(20);
+        text("NIVEL 2",width/2,50);
+   }
+    dron.puntaje = 0;
+ }
+	
 
 
   /*--------Metodos accesores---------*/
+
   /** se colocan los metodos accesores */
   public PImage getImagen() {
     return this.imagen;
