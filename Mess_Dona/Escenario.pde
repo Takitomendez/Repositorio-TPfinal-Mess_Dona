@@ -1,4 +1,4 @@
-/** se define la clase */ 
+/** se define la clase */
 
 class Escenario {
 
@@ -17,7 +17,7 @@ class Escenario {
     imagen.resize(width, height);
     this.puntaje=0;
     this.vida= loadImage("Data/Sprites/Vida.png");
-    vida.resize(60,60);
+    vida.resize(60, 60);
     contadorVida = 3;
   }
   public void mostrarEscenario() {
@@ -32,7 +32,7 @@ class Escenario {
     fill(#FFFFFF);
     textAlign(CENTER);
     text("PUNTAJE: " + puntaje, width/2, height/30);
-    if (puntaje < 100000) {
+    if (puntaje < 100) {
       puntaje=puntaje + 1;
     }
   }
@@ -41,27 +41,37 @@ class Escenario {
     image(vida, width/10, height/30);
     fill(#050505);
     text(contadorVida, width/10, height/20);
-    /**if (puntaje == 50) {
-      contadorVida = contadorVida - 1;
-    }
-    if (puntaje ==100) {
-      contadorVida = contadorVida - 1;
-    }
-    if (puntaje == 150) {
-      contadorVida = contadorVida - 1;
-    }*/
+    /**   if (puntaje == 50) {
+     contadorVida = contadorVida - 1;
+     }
+     if (puntaje ==100) {
+     contadorVida = contadorVida - 1;
+     }
+     if (puntaje == 150) {
+     contadorVida = contadorVida - 1;
+     }*/
   }
-  public void mostrarNivel(Nivel nivel) {
-     imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
-     imagen.resize(width,height); 
-       if(dron.getPuntaje() == 15){
-          background(imagen);
-         textSize(20);
-        text("NIVEL 2",width/2,50);
-   }
-    dron.puntaje = 0;
- }
-	
+  public void mostrarNivel() {
+    if (this.puntaje == 25) {
+
+      imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
+      imagen.resize(width, height);
+      background(imagen);
+      fill(#050505);
+      textSize(20);
+      text("NIVEL 2", width-100, 50);
+    } else {
+      if (this.puntaje == 50) {
+        imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
+        imagen.resize(width, height);
+        background(imagen);
+        fill(#050505);
+        textSize(20);
+        text("NIVEL 3", width-100, 50 );
+      }
+    }
+  }
+
 
 
   /*--------Metodos accesores---------*/
@@ -86,7 +96,7 @@ class Escenario {
   public void setVida(PImage vida) {
     this.vida = vida;
   }
-   public int getContadorVida() {
+  public int getContadorVida() {
     return this.contadorVida;
   }
   public void setContadorVida(int contadorVida) {
