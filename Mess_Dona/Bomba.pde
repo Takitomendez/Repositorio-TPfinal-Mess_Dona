@@ -16,6 +16,7 @@ class Bomba extends FrameObject{
     this.posXFrame=1;
     this.posYFrame=0;
     this.estado= true;
+    sprite.resize(150,66);
   }
   
 
@@ -23,7 +24,7 @@ class Bomba extends FrameObject{
  /** se definen las operaciones a realizar */
   public void display(int p){
     if(this.estado != false){
-    sprite.resize(150,66);
+    
     image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);
     }
     frameRate(8);
@@ -52,5 +53,9 @@ class Bomba extends FrameObject{
    public void setDanio (float danio){
     this.danio = danio;
   }
+  public void setEstado(boolean estado){
+    this.estado=estado;
+  }
+  
   
 }

@@ -15,6 +15,7 @@ class Dron extends FrameObject {
     this.widthFrame = 61;
     this.heightFrame =115;
     this.velocidad= new PVector(20, 0);
+    sprite.resize(61, 115);
   }
 
 
@@ -23,10 +24,10 @@ class Dron extends FrameObject {
   public void display() {
     imageMode(CENTER);
     image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
-    sprite.resize(61, 115);
   }
-  public void mover() {
-    if (keyPressed & (keyCode == LEFT)) {
+  public void mover(float x) {
+    posicion.x=x;
+   /* if (keyPressed & (keyCode == LEFT)) {
       if (posicion.x>widthFrame/2) {
         posicion.x = posicion.x-velocidad.x;
       }
@@ -35,9 +36,9 @@ class Dron extends FrameObject {
       if (posicion.x<width-widthFrame/2) {
         posicion.x = posicion.x+velocidad.x;
       }
-    }
+    }*/
   }
-  /* public void desarmar(Bomba bomba, Nivel nivel) {
+   public void desarmar(Bomba bomba) {
    boolean isColliding = true;
    if((this.posicion.x+this.widthFrame) <= bomba.getPosicion().x){
    isColliding = false;
@@ -57,18 +58,13 @@ class Dron extends FrameObject {
    
    
    if(isColliding){ // evalua si hay colison
-   this.colorSquare = color(255,0,0); //establece el color rojo al cuadrado chico
-   
-   //  otherSquare.setVelocity(new PVector(0,0));
-   otherSquare.setColorSquare(color(255,0,0));    //establece el color rojo al cuadrado grande
-   
-   }else{
-   this.colorSquare = color(0,255,0);  //vuelve a cambiar el color del cuadrado a verde
-   otherSquare.setColorSquare(color(0,255,0)); //vuelve a cambiar el color del cuadrado a verde
+     println("colision");
+     bomba.setEstado(false);
+   }
    }
    
    
-   }**/
+   
   public void devolverBomba(Bomba bomba, Nivel nivel) {
   }
   public void explotar( Avion avion) {
