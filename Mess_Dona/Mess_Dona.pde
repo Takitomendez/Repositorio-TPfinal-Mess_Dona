@@ -3,12 +3,23 @@ SoundFile sonido;
 
 Dron dron;
 Escenario escenario;
-private int estado;
+
+//Explosion explosion;
 int tiempoBomba =20;
 int contador=1;
+/*int timePlane=100;
+int cont=1;
+int contPlane=1;*/
+
+private int estado;
+
 PImage imagen;
 
+
 private ListaBombas listaBombas;
+ArrayList<Explosion> explosiones;
+//private ListaAviones listaAviones;
+//private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
 public void setup() {
   size(1000, 700);
@@ -17,10 +28,47 @@ public void setup() {
   dron = new Dron();
   listaBombas = new ListaBombas();
   escenario= new Escenario();
-  estado = MaquinaEstado.Intro;
+
+  explosiones = new ArrayList();
+//  frameRate(20);
+//  listaAviones = new ListaAviones();
+//  listaAvionesB = new ListaAviones();
+  
 }
 /** Se dibuja el sketch*/
 public void draw() {
+  background (#000000);
+  escenario.mostrarEscenario();
+  dron.display();
+  dron.mover();
+ /* if(random(100)>=95){
+    listaBombas.agregarBomba(new Bomba());
+  }*/
+  listaBombas.displayBombas(explosiones);
+  listaBombas.validarImpacto(dron);
+  for(int i=0;i<explosiones.size();i++){
+    Explosion e = explosiones.get(i);
+    e.display();
+  }
+/***********  for(Bomba b:listaBombas.getBombas()){
+ //   b.display();
+    b.mover();
+    dron.desarmar(b);
+    
+  }
+  listaBombas.removerBombas();
+  if(random(100)>=95){
+    listaBombas.agregarBomba(new Bomba());
+  }******************/
+  
+//  listaBombas.removerBombas();
+//  if(contador<= tiempoBomba){
+
+  estado = MaquinaEstado.Intro;
+//}
+/** Se dibuja el sketch*/
+
+//public void draw() {
   if (estado==1) {
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
@@ -36,7 +84,8 @@ public void draw() {
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
     dron.display();
-    dron.mover(mouseX);
+    dron.mover();
+
 
     for (Bomba b : listaBombas.getBombas()) {
       b.display();
@@ -87,4 +136,33 @@ public void keyPressed() {
   {
     estado = MaquinaEstado.Nivel_1;
   }
+
+  
+/**  for(Avion ab:listaAvionesB.getAviones()){
+    ab.mover(false);
+  }
+  if(contPlane<= timePlane){
+
+    if(contPlane==timePlane){  
+      listaAvionesB.agregarAvion(new Avion());
+    } 
+    contPlane++;
+  }
+  else{
+    contPlane=1;
+  }
+  
+  for(Avion a:listaAviones.getAviones()){
+    a.mover(true);
+  }
+  if(cont<= timePlane){
+
+    if(cont==timePlane){  
+      listaAviones.agregarAvion(new Avion( new PVector(0,50)));
+    } 
+    cont=cont+2;
+  }
+  else{
+    cont=1;
+  }*/
 }
