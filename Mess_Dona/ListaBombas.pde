@@ -8,7 +8,9 @@ class ListaBombas{
   public ListaBombas(){
     bombas= new ArrayList();
   }
-
+ /*public void reset(){
+  bombas.size()=0;
+ }*/
   public void agregarBomba(Bomba unaBomba){
     bombas.add(unaBomba);
   }
