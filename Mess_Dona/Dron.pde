@@ -15,6 +15,8 @@ class Dron extends FrameObject {
     this.widthFrame = 61;
     this.heightFrame =115;
     this.velocidad= new PVector(20, 0);
+    this.estado= true;
+    
   }
 
 
@@ -27,51 +29,50 @@ class Dron extends FrameObject {
   }
   public void mover(float x) {
     this.posicion.x=x;
-    
-    
+
+
     /**if (keyPressed & (keyCode == LEFT)) {
-      if (posicion.x>widthFrame/2) {
-        posicion.x = posicion.x-velocidad.x;
-      }
-    }
-    if (keyPressed & (keyCode == RIGHT)) {
-      if (posicion.x<width-widthFrame/2) {
-        posicion.x = posicion.x+velocidad.x;
-      }
-    }*/
+     if (posicion.x>widthFrame/2) {
+     posicion.x = posicion.x-velocidad.x;
+     }
+     }
+     if (keyPressed & (keyCode == RIGHT)) {
+     if (posicion.x<width-widthFrame/2) {
+     posicion.x = posicion.x+velocidad.x;
+     }
+     }*/
   }
-  /* public void desarmar(Bomba bomba, Nivel nivel) {
-   boolean isColliding = true;
-   if((this.posicion.x+this.widthFrame) <= bomba.getPosicion().x){
-   isColliding = false;
-   }
-   
-   if(this.posicion.x >= (bomba.getPosicion().x+bomba.getWidthFrame())){
-   isColliding = false;
-   }
-   
-   if((this.posicion.y+this.heightFrame) <= bomba.getPosicion().y){
-   isColliding = false;
-   }
-   
-   if(this.posicion.y >= (bomba.getPosicion().y+bomba.getHeightFrame())){
-   isColliding = false;
-   }
-   
-   
-   if(isColliding){ // evalua si hay colison
-   this.colorSquare = color(255,0,0); //establece el color rojo al cuadrado chico
-   
-   //  otherSquare.setVelocity(new PVector(0,0));
-   otherSquare.setColorSquare(color(255,0,0));    //establece el color rojo al cuadrado grande
-   
-   }else{
-   this.colorSquare = color(0,255,0);  //vuelve a cambiar el color del cuadrado a verde
-   otherSquare.setColorSquare(color(0,255,0)); //vuelve a cambiar el color del cuadrado a verde
-   }
-   
-   
-   }**/
+  public void desarmar(ListaBombas listBombs) {
+    
+    boolean existeColision = false;
+
+    for (Bomba b:listBomb.getBombas()) {
+      if (((this.posicion.x+this.widthFrame/2) <= b.getPosicion().x )) {
+        existeColision = false;
+
+      }
+
+      if (this.posicion.x - this.widthFrame/2 >(b.getPosicion().x+b.getWidthFrame())) {
+        existeColision = false;
+      }
+
+      if ((this.posicion.y-this.heightFrame/2) <= b.getPosicion().y+b.getHeightFrame()) {
+        existeColision = false;
+      }
+
+     if (this.posicion.y+this.heightFrame/2 >= (b.getPosicion().y+b.getHeightFrame())) {
+        existeColision = false;
+      }
+      
+      if(existeColision){   
+        this.estado = false;
+        b.setEstado(false);
+      }
+          
+      existeColision = true;
+    
+  }
+}
   public void devolverBomba(Bomba bomba, Nivel nivel) {
   }
   public void explotar( Avion avion) {

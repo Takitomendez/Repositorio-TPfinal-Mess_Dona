@@ -1,5 +1,4 @@
 Dron dron;
-//new comment
 Escenario escenario;
 int tiempoBomba =20;
 int contador=1;
@@ -10,7 +9,6 @@ public void setup() {
   dron = new Dron();
   listaBombas = new ListaBombas();
   escenario= new Escenario();
-  
 }
 /** Se dibuja el sketch*/
 public void draw() {
@@ -18,19 +16,20 @@ public void draw() {
   escenario.mostrarEscenario();
   dron.display();
   dron.mover(mouseX);
-  
-  for(Bomba b:listaBombas.getBombas()){
+
+  for (Bomba b : listaBombas.getBombas()) {
     b.display();
     b.mover();
   }
-  if(contador<= tiempoBomba){
+  if (contador<= tiempoBomba) {
 
-    if(contador==tiempoBomba){  
+    if (contador==tiempoBomba) {  
       listaBombas.agregarBomba(new Bomba());
     } 
     contador++;
-  }
-  else{
+  } else {
     contador=1;
   }
+  dron.desarmar(listaBombas);
+  listaBombas.removerBombas();
 }
