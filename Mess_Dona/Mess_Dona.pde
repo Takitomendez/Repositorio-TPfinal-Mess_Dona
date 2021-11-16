@@ -1,12 +1,14 @@
 Dron dron;
 //new comment
 Escenario escenario;
-/*int tiempoBomba =20;
+//Explosion explosion;
+int tiempoBomba =20;
 int contador=1;
-int timePlane=100;
+/*int timePlane=100;
 int cont=1;
 int contPlane=1;*/
 private ListaBombas listaBombas;
+ArrayList<Explosion> explosiones;
 //private ListaAviones listaAviones;
 //private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
@@ -15,6 +17,8 @@ public void setup() {
   dron = new Dron();
   listaBombas = new ListaBombas();
   escenario= new Escenario();
+  explosiones = new ArrayList();
+//  frameRate(20);
 //  listaAviones = new ListaAviones();
 //  listaAvionesB = new ListaAviones();
   
@@ -24,19 +28,29 @@ public void draw() {
   background (#000000);
   escenario.mostrarEscenario();
   dron.display();
-  dron.mover(mouseX);
-  
-  for(Bomba b:listaBombas.getBombas()){
+  dron.mover();
+/*  if(random(100)>=95){
+    listaBombas.agregarBomba(new Bomba());
+  }*/
+  listaBombas.displayBombas(explosiones);
+  listaBombas.validarImpacto(dron);
+  for(int i=0;i<explosiones.size();i++){
+    Explosion e = explosiones.get(i);
+    e.display();
+  }
+/***********  for(Bomba b:listaBombas.getBombas()){
  //   b.display();
     b.mover();
     dron.desarmar(b);
+    
   }
   listaBombas.removerBombas();
   if(random(100)>=95){
     listaBombas.agregarBomba(new Bomba());
-  }
+  }******************/
+  
 //  listaBombas.removerBombas();
-/*  if(contador<= tiempoBomba){
+  if(contador<= tiempoBomba){
 
     if(contador==tiempoBomba){  
       listaBombas.agregarBomba(new Bomba());
@@ -45,7 +59,7 @@ public void draw() {
   }
   else{
     contador=1;
-  }*/
+  }
   
   
 /**  for(Avion ab:listaAvionesB.getAviones()){

@@ -25,8 +25,8 @@ class Dron extends FrameObject {
     imageMode(CENTER);
     image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
   }
-  public void mover(float x) {
-    posicion.x=x;
+  public void mover() {
+    this.posicion.x = mouseX;
    /* if (keyPressed & (keyCode == LEFT)) {
       if (posicion.x>widthFrame/2) {
         posicion.x = posicion.x-velocidad.x;
@@ -72,7 +72,8 @@ class Dron extends FrameObject {
 
 
   /*--------Metodos accesores---------*/
-  /** se colocan los metodos accesores */
+  /** se colocan los metodos accesores */ 
+  
 
   public int getPuntaje() {
     return this.puntaje;
