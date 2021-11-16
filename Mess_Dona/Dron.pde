@@ -42,11 +42,11 @@ class Dron extends FrameObject {
      }
      }*/
   }
-  public void desarmar(ListaBombas listBombs) {
+  public void desarmar(ListaBombas listaBombas) {
     
     boolean existeColision = false;
 
-    for (Bomba b:listBomb.getBombas()) {
+    for (Bomba b:listaBombas.getBombas()) {
       if (((this.posicion.x+this.widthFrame/2) <= b.getPosicion().x )) {
         existeColision = false;
 
