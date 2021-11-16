@@ -10,6 +10,12 @@ class ListaBombas{
   }
 
 
+
+=======
+ /*public void reset(){
+  bombas.size()=0;
+ }*/
+
   public void agregarBomba(Bomba unaBomba){
     bombas.add(unaBomba);
   }

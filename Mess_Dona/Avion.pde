@@ -36,24 +36,6 @@ class Avion extends FrameObject{
     }
     frameRate(8);
   }
-  
-  public void mover(boolean tipo){
-    if (!tipo){
-      if (this.posicion.x>=width || this.posicion.x<=0){
-        this.velocidad.x = this.velocidad.x * -1;
-      }
-      this.posicion.add(this.velocidad);
-      if(posXFrame<4){
-        posXFrame++;
-      }
-      else{
-        posXFrame=0;
-      }
-    }else{
-      this.posicion.add(this.velocidad);
-    }
-    display(posXFrame, tipo);
-  }
   public void explotar (Dron dron){
   }
  

@@ -4,9 +4,6 @@ class Dron extends FrameObject {
 
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
-  private int puntaje;
-  private int vida;
-
 
   /** constructor parametrizado*/
   public Dron() {  
@@ -14,8 +11,12 @@ class Dron extends FrameObject {
     this.posicion = new PVector(width/2, height-150);
     this.widthFrame = 61;
     this.heightFrame =115;
+
     this.velocidad= new PVector(20, 0);
     sprite.resize(61, 115);
+=======
+ //error   this.velocidad= new PVector(8, 0);
+
   }
 
 
@@ -25,20 +26,14 @@ class Dron extends FrameObject {
     imageMode(CENTER);
     image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
   }
+
   public void mover() {
     this.posicion.x = mouseX;
-   /* if (keyPressed & (keyCode == LEFT)) {
-      if (posicion.x>widthFrame/2) {
-        posicion.x = posicion.x-velocidad.x;
-      }
-    }
-    if (keyPressed & (keyCode == RIGHT)) {
-      if (posicion.x<width-widthFrame/2) {
-        posicion.x = posicion.x+velocidad.x;
-      }
-    }*/
+
   }
-   public void desarmar(Bomba bomba) {
+ 
+   public void desarmar(Bomba bomba, Nivel nivel) {
+
    boolean isColliding = true;
    if((this.posicion.x+this.widthFrame) <= bomba.getPosicion().x){
    isColliding = false;
@@ -64,9 +59,12 @@ class Dron extends FrameObject {
    }
    
    
+
    
   public void devolverBomba(Bomba bomba, Nivel nivel) {
-  }
+=======
+   }*/
+
   public void explotar( Avion avion) {
   }
 
@@ -75,17 +73,5 @@ class Dron extends FrameObject {
   /** se colocan los metodos accesores */ 
   
 
-  public int getPuntaje() {
-    return this.puntaje;
-  }
-  public void setPuntaje(int puntaje) {
-    this.puntaje = puntaje;
-  }
 
-  public int getVida() {
-    return this.vida;
-  }
-  public void setVida(int vida) {
-    this.vida = vida;
-  }
 }

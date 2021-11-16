@@ -11,7 +11,7 @@ class Bomba extends FrameObject{
   public Bomba(){
     this.sprite = loadImage("Data/Sprites/Bomba/bomba.png");
     this.posicion= new PVector(random(20,width-20),-50);
-    this.velocidad= new PVector(0,20);
+    this.velocidad= new PVector(0,8);
     this.widthFrame= 38;
     this.heightFrame=66;
     this.posXFrame=0;
@@ -39,7 +39,9 @@ class Bomba extends FrameObject{
     
     image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);
     }
+
     frameRate(8);*/
+
   }
   public void mover(){
     this.posicion.add(this.velocidad);
