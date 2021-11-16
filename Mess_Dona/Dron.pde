@@ -14,7 +14,7 @@ class Dron extends FrameObject {
 
     this.velocidad= new PVector(20, 0);
     sprite.resize(61, 115);
-=======
+
  //error   this.velocidad= new PVector(8, 0);
 
   }
@@ -62,8 +62,8 @@ class Dron extends FrameObject {
 
    
   public void devolverBomba(Bomba bomba, Nivel nivel) {
-=======
-   }*/
+
+   }
 
   public void explotar( Avion avion) {
   }

@@ -41,7 +41,7 @@ public void draw() {
   escenario.mostrarEscenario();
   dron.display();
   dron.mover();
-/*  if(random(100)>=95){
+ /* if(random(100)>=95){
     listaBombas.agregarBomba(new Bomba());
   }*/
   listaBombas.displayBombas(explosiones);
@@ -62,12 +62,13 @@ public void draw() {
   }******************/
   
 //  listaBombas.removerBombas();
-  if(contador<= tiempoBomba){
-=======
+//  if(contador<= tiempoBomba){
+
   estado = MaquinaEstado.Intro;
-}
+//}
 /** Se dibuja el sketch*/
-public void draw() {
+
+//public void draw() {
   if (estado==1) {
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
@@ -83,7 +84,7 @@ public void draw() {
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
     dron.display();
-    dron.mover(mouseX);
+    dron.mover();
 
 
     for (Bomba b : listaBombas.getBombas()) {
@@ -135,7 +136,7 @@ public void keyPressed() {
   {
     estado = MaquinaEstado.Nivel_1;
   }
-  
+
   
 /**  for(Avion ab:listaAvionesB.getAviones()){
     ab.mover(false);
