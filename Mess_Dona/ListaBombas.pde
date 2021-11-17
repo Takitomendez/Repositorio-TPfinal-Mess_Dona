@@ -20,21 +20,22 @@ class ListaBombas{
     bombas.add(unaBomba);
   }
   
-  public void evaluarEliminarBomba(Bomba b, ArrayList<Explosion> explosiones) {
+  public void evaluarEliminarBomba(Bomba b, ArrayList<Explosion> explosiones, Escenario vida) {
     if (b.getPosicion().y > height) {
       Explosion unaExplosion = new Explosion((int)b.getPosicion().x);
       //unaExplosion.display();
       explosiones.add(unaExplosion);
       bombas.remove(b);
+      vida.setContadorVida(vida.getContadorVida() - 1);
     }
   }
   
-  public void displayBombas( ArrayList<Explosion> explosiones) {
+  public void displayBombas( ArrayList<Explosion> explosiones, Escenario vida) {
     for (int i=0; i<bombas.size(); i++) {
       Bomba b = bombas.get(i);
       b.display();
 
-      evaluarEliminarBomba(b,explosiones);
+      evaluarEliminarBomba(b,explosiones, vida);
     }
   }
   

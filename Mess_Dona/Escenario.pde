@@ -41,15 +41,7 @@ class Escenario {
     image(vida, width/10, height/30);
     fill(#050505);
     text(contadorVida, width/10, height/20);
-    /**   if (puntaje == 50) {
-     contadorVida = contadorVida - 1;
-     }
-     if (puntaje ==100) {
-     contadorVida = contadorVida - 1;
-     }
-     if (puntaje == 150) {
-     contadorVida = contadorVida - 1;
-     }*/
+  
   }
   public void mostrarNivel() {
     if (this.puntaje == 25) {

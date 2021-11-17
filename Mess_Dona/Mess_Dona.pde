@@ -28,7 +28,7 @@ public void setup() {
   dron = new Dron();
   listaBombas = new ListaBombas();
   escenario= new Escenario();
-
+  estado = MaquinaEstado.Intro;
   explosiones = new ArrayList();
 //  frameRate(20);
 //  listaAviones = new ListaAviones();
@@ -44,31 +44,9 @@ public void draw() {
  /* if(random(100)>=95){
     listaBombas.agregarBomba(new Bomba());
   }*/
-  listaBombas.displayBombas(explosiones);
-  listaBombas.validarImpacto(dron);
-  for(int i=0;i<explosiones.size();i++){
-    Explosion e = explosiones.get(i);
-    e.display();
-  }
-/***********  for(Bomba b:listaBombas.getBombas()){
- //   b.display();
-    b.mover();
-    dron.desarmar(b);
-    
-  }
-  listaBombas.removerBombas();
-  if(random(100)>=95){
-    listaBombas.agregarBomba(new Bomba());
-  }******************/
-  
-//  listaBombas.removerBombas();
-//  if(contador<= tiempoBomba){
+ 
 
-  estado = MaquinaEstado.Intro;
-//}
-/** Se dibuja el sketch*/
 
-//public void draw() {
   if (estado==1) {
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
@@ -85,12 +63,12 @@ public void draw() {
     escenario.mostrarVida(dron);
     dron.display();
     dron.mover();
-
-
-    for (Bomba b : listaBombas.getBombas()) {
-      b.display();
-      b.mover();
-    }
+     listaBombas.displayBombas(explosiones, escenario);
+  listaBombas.validarImpacto(dron);
+  for(int i=0;i<explosiones.size();i++){
+    Explosion e = explosiones.get(i);
+    e.display();
+  }
     if (contador<= tiempoBomba) {
 
       if (contador==tiempoBomba) {
@@ -119,6 +97,9 @@ public void draw() {
     fill(#FFFFFF);
   }
   if (estado==6) {
+  /**  imagen = loadImage("Data/Sprites/.png");
+    imagen.resize(width, height);
+    background (imagen);*/
     
     text("PERDISTE!!!", width/2, height-50);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
@@ -135,6 +116,8 @@ public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER));
   {
     estado = MaquinaEstado.Nivel_1;
+    escenario.setContadorVida(3);
+    escenario.setPuntaje(0);
   }
 
   
