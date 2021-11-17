@@ -37,10 +37,7 @@ public void setup() {
 }
 /** Se dibuja el sketch*/
 public void draw() {
-  background (#000000);
-  escenario.mostrarEscenario();
-  dron.display();
-  dron.mover();
+  
  /* if(random(100)>=95){
     listaBombas.agregarBomba(new Bomba());
   }*/
