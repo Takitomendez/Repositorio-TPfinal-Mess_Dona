@@ -30,7 +30,7 @@ class Avion extends FrameObject{
     imageMode(CENTER);
     image(sprite,posicion.x,posicion.y);
     mover();
-    frameRate(30);
+//    frameRate(30);
     /*if(this.estado != false){
       if (!t){
         image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);

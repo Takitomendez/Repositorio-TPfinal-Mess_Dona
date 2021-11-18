@@ -22,10 +22,10 @@ class Dron extends FrameObject {
   public Dron(int tipo) {
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n2.png");
     this.posicion = new PVector(width-150, height/2);
-    this.widthFrame = 115;
-    this.heightFrame =61;
+    this.widthFrame = 105;
+    this.heightFrame =51;
     this.tipo=tipo;
-    sprite.resize(115, 61);
+    sprite.resize(105, 51);
 
 
   }
@@ -47,7 +47,7 @@ class Dron extends FrameObject {
     }
   }
  
-   public void desarmar(Bomba bomba, Nivel nivel) {
+   public void desarmar(Bomba bomba) {
 
    boolean isColliding = true;
    if((this.posicion.x+this.widthFrame) <= bomba.getPosicion().x){

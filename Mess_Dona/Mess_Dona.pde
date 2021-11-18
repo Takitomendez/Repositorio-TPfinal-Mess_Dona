@@ -139,7 +139,7 @@ public void draw() {
 }
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_1;
+    estado = MaquinaEstado.Nivel_2;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
   }

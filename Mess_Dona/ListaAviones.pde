@@ -19,7 +19,7 @@ class ListaAviones {
       //unaExplosion.display();
       explosiones.add(unaExplosion);
       aviones.remove(a);
-      vida.setContadorVida(vida.getContadorVida() - 1);
+      escenario.setPuntaje(escenario.getPuntaje()+1);
     }
   }
   
@@ -37,21 +37,22 @@ class ListaAviones {
       Avion a = aviones.get(i);
       boolean isColliding = true;
       
-      if((dron.getPosicion().x+dron.getWidthFrame()) <= a.getPosicion().x){
+      if((dron.getPosicion().x+dron.getWidthFrame()/2) <= a.getPosicion().x){
         isColliding = false;
       }
-      if(dron.getPosicion().x >= (a.getPosicion().x+a.getWidthFrame())){
+      if(dron.getPosicion().x >= (a.getPosicion().x+a.getWidthFrame()/2)){
         isColliding = false;
       }
       if((dron.getPosicion().y+dron.getHeightFrame()) <= a.getPosicion().y){
         isColliding = false;
       }
-      if(dron.getPosicion().y >= (a.getPosicion().y+a.getHeightFrame())){
+      if(dron.getPosicion().y >= (a.getPosicion().y+a.getHeightFrame()/2)){
         isColliding = false;
       }
       
       if (isColliding) {
         aviones.remove(a);
+        escenario.setContadorVida(escenario.getContadorVida()-1);
         }
       } 
     }
