@@ -32,9 +32,7 @@ class Escenario {
     fill(#FFFFFF);
     textAlign(CENTER);
     text("PUNTAJE: " + puntaje, width/2, height/30);
-    if (puntaje < 100) {
-      puntaje=puntaje + 1;
-    }
+    
   }
   public void mostrarVida(Dron dron) {
     text("Vida: ", width/25, height/25);
@@ -44,22 +42,18 @@ class Escenario {
   
   }
   public void mostrarNivel() {
-    if (this.puntaje == 25) {
-
+    if (getEstado()==3) {
+      
       imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
       imagen.resize(width, height);
       background(imagen);
-      fill(#050505);
-      textSize(20);
-      text("NIVEL 2", width-100, 50);
+      
     } else {
-      if (this.puntaje == 50) {
+      if (getEstado()==4) {
         imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
         imagen.resize(width, height);
         background(imagen);
-        fill(#050505);
-        textSize(20);
-        text("NIVEL 3", width-100, 50 );
+       
       }
     }
   }

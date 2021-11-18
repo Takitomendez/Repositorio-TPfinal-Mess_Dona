@@ -51,6 +51,7 @@ class ListaBombas{
       Bomba b = bombas.get(i);
       boolean isColliding = true;
       
+
       if((dron.getPosicion().x+dron.getWidthFrame()) <= b.getPosicion().x){
         isColliding = false;
       }
@@ -63,10 +64,12 @@ class ListaBombas{
       if(dron.getPosicion().y >= (b.getPosicion().y+b.getHeightFrame())){
         isColliding = false;
       }
-      
+
       if (isColliding) {
         bombas.remove(b);
         setCont(getCont()-1);
+        escenario.setPuntaje(escenario.getPuntaje() + 1);
+        println(escenario.getPuntaje());
         colision=true;
         }
       } 

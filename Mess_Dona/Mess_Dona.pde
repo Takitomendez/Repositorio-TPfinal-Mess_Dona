@@ -20,11 +20,11 @@ private ListaAviones listaAviones;
 /** Se establece la configuracion inicial*/
 public void setup() {
   size(1000, 700);
-  sonido= new SoundFile(this, "music2.mp3");
-  sonido.play();
+//  sonido= new SoundFile(this, "music2.mp3");
+//  sonido.play();
   dron = new Dron();
   dron2 = new Dron(2);
-  listaBombas = new ListaBombas();
+//  listaBombas = new ListaBombas();
   listaAviones = new ListaAviones();
 //  listaAvionesB = new ListaAviones();  
   escenario= new Escenario();
@@ -49,10 +49,10 @@ public void draw() {
     fill(#FFFFFF);
   }
   if (estado ==2) {
-    escenario.mostrarEscenario();
+  //  escenario.mostrarEscenario();
     escenario.mostrarNivel();
-    escenario.mostrarPuntaje(dron);
-    escenario.mostrarVida(dron);
+    escenario.mostrarPuntaje();
+    escenario.mostrarVida();
     dron.display();
     dron.mover();
     listaBombas.displayBombas(explosiones, escenario, cont);
@@ -82,27 +82,37 @@ public void draw() {
     }*/
   }
   if ( estado==3) {
-    escenario.mostrarEscenario();
-//    escenario.mostrarNivel();
-    escenario.mostrarPuntaje(dron);
-    escenario.mostrarVida(dron);
+ //   escenario.mostrarEscenario();
+    escenario.mostrarNivel();
+    escenario.mostrarPuntaje();
+    escenario.mostrarVida();
     dron2.display();
     dron2.mover();
     listaAviones.displayAviones(explosiones, escenario);
     listaAviones.validarImpacto(dron2);
-    if(cont<= timePlane){
+    if(random(100)>=90){
+      listaAviones.agregarAvion(new Avion(new PVector(5,0)));
+    }
+  /*  if(cont<= timePlane){
       if(cont==timePlane){
-        listaAviones.agregarAvion(new Avion( new PVector(8,0)));
+        listaAviones.agregarAvion(new Avion( new PVector(13,0)));
       } 
       cont++;
     }else{
       cont=1;
-    }
+    }*/
   }
+  if(escenario.getPuntaje()==25){
+   estado = 3;
+  }
+  
   if (estado==4) {
     escenario.mostrarNivel();
-    escenario.mostrarPuntaje(dron);
-    escenario.mostrarVida(dron);
+    escenario.mostrarPuntaje();
+    escenario.mostrarVida();
+  }
+  if(escenario.getPuntaje()==50){
+   estado=4;
   }
   if (estado ==5) {
     text("SALVASTE LAS MALVINAS!!!", width/2, height-50);
@@ -112,9 +122,9 @@ public void draw() {
     fill(#FFFFFF);
   }
   if (estado==6) {
-  /**  imagen = loadImage("Data/Sprites/.png");
+    imagen = loadImage("Data/Sprites/Game Over.png");
     imagen.resize(width, height);
-    background (imagen);*/
+    background (imagen);
     
     text("PERDISTE!!!", width/2, height-50);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
@@ -129,7 +139,7 @@ public void draw() {
 }
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_2;
+    estado = MaquinaEstado.Nivel_1;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
   }
@@ -166,9 +176,14 @@ public void keyPressed() {
     cont=1;
   }*/
 }
+
 public void setCont(int cont){
     this.cont=cont;
   }
-  public int getCont(){
+ public int getCont(){
     return this.cont;
   }
+
+public int getEstado(){
+ return this.estado;
+}
