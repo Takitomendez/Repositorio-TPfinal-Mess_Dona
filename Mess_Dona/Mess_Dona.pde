@@ -55,7 +55,7 @@ public void draw() {
   }
   if (estado ==2) {
     escenario.mostrarEscenario();
-    escenario.mostrarNivel();
+ //   escenario.mostrarNivel();
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
     dron.display();
@@ -81,10 +81,17 @@ public void draw() {
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
   }
+  if(escenario.getPuntaje()==25){
+   estado = 3;
+  }
+  
   if (estado==4) {
     escenario.mostrarNivel();
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
+  }
+  if(escenario.getPuntaje()==50){
+   estado=4;
   }
   if (estado ==5) {
     text("SALVASTE LAS MALVINAS!!!", width/2, height-50);
@@ -94,9 +101,9 @@ public void draw() {
     fill(#FFFFFF);
   }
   if (estado==6) {
-  /**  imagen = loadImage("Data/Sprites/.png");
+    imagen = loadImage("Data/Sprites/Game Over.png");
     imagen.resize(width, height);
-    background (imagen);*/
+    background (imagen);
     
     text("PERDISTE!!!", width/2, height-50);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
@@ -145,4 +152,7 @@ public void keyPressed() {
   else{
     cont=1;
   }*/
+}
+public int getEstado(){
+ return this.estado;
 }

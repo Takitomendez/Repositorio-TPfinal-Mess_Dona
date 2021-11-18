@@ -64,7 +64,8 @@ class ListaBombas{
 
           if (isColliding) {
             bombas.remove(b);
-           
+           escenario.setPuntaje(escenario.getPuntaje() + 1);
+           println(escenario.getPuntaje());
           }
         }
       
