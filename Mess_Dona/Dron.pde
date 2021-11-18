@@ -1,21 +1,32 @@
 /** se define la clase */
 class Dron extends FrameObject {
-
+  private int tipo;
 
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
 
   /** constructor parametrizado*/
-  public Dron() {  
+  public Dron() {
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n1.png");
     this.posicion = new PVector(width/2, height-150);
     this.widthFrame = 61;
     this.heightFrame =115;
-
+    this.tipo=1;
     this.velocidad= new PVector(20, 0);
     sprite.resize(61, 115);
 
  //error   this.velocidad= new PVector(8, 0);
+
+  }
+  
+  public Dron(int tipo) {
+    this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n2.png");
+    this.posicion = new PVector(width-150, height/2);
+    this.widthFrame = 115;
+    this.heightFrame =61;
+    this.tipo=tipo;
+    sprite.resize(115, 61);
+
 
   }
 
@@ -28,8 +39,12 @@ class Dron extends FrameObject {
   }
 
   public void mover() {
-    this.posicion.x = mouseX;
-
+    if(tipo==1){
+      this.posicion.x = mouseX;
+    }
+    else{
+      this.posicion.y = mouseY;
+    }
   }
  
    public void desarmar(Bomba bomba, Nivel nivel) {

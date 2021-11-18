@@ -1,17 +1,60 @@
-import java.util.*;
+//import java.util.*;
 /** se define la clase */
 class ListaAviones {
-  private List<Avion>aviones;
+  private ArrayList<Avion>aviones;
   
    /**----Zona de contructor----*/
   
   public ListaAviones(){
-    aviones= new ArrayList();
+    this.aviones= new ArrayList();
   }
   //ver operaciones de agregar y remover
   public void agregarAvion(Avion unAvion){
     aviones.add(unAvion);
   }
+  
+  public void evaluarEliminarAvion(Avion a, ArrayList<Explosion> explosiones, Escenario vida) {
+    if (a.getPosicion().x > width) {
+      Explosion unaExplosion = new Explosion((int)a.getPosicion().x);
+      //unaExplosion.display();
+      explosiones.add(unaExplosion);
+      aviones.remove(a);
+      vida.setContadorVida(vida.getContadorVida() - 1);
+    }
+  }
+  
+  public void displayAviones( ArrayList<Explosion> explosiones, Escenario vida) {
+    for (int i=0; i<aviones.size(); i++) {
+      Avion a = aviones.get(i);
+      a.display();
+
+      evaluarEliminarAvion(a,explosiones, vida);
+    }
+  }
+  
+  public void validarImpacto(Dron dron) {
+    for (int i=0; i<aviones.size(); i++) {
+      Avion a = aviones.get(i);
+      boolean isColliding = true;
+      
+      if((dron.getPosicion().x+dron.getWidthFrame()) <= a.getPosicion().x){
+        isColliding = false;
+      }
+      if(dron.getPosicion().x >= (a.getPosicion().x+a.getWidthFrame())){
+        isColliding = false;
+      }
+      if((dron.getPosicion().y+dron.getHeightFrame()) <= a.getPosicion().y){
+        isColliding = false;
+      }
+      if(dron.getPosicion().y >= (a.getPosicion().y+a.getHeightFrame())){
+        isColliding = false;
+      }
+      
+      if (isColliding) {
+        aviones.remove(a);
+        }
+      } 
+    }
   
   public void removerAviones(){
     for(int i= aviones.size()-1;i>=0;i--){
@@ -21,10 +64,10 @@ class ListaAviones {
     }  
   }
   
-  public void setAviones(List<Avion> aviones){
+  public void setAviones(ArrayList<Avion> aviones){
     this.aviones=aviones;
   }
-  public List<Avion> getAviones(){
+  public ArrayList<Avion> getAviones(){
     return this.aviones;
   }
 }

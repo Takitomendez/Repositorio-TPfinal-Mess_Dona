@@ -2,23 +2,20 @@ import processing.sound.*;
 SoundFile sonido;
 
 Dron dron;
+Dron dron2;
 Escenario escenario;
 
 //Explosion explosion;
-int tiempoBomba =20;
+int tiempoBomba =200;
 int contador=1;
-/*int timePlane=100;
-int cont=1;
-int contPlane=1;*/
-
+int timePlane=25;
+int cont=69;
+//int contPlane=1;*/
 private int estado;
-
 PImage imagen;
-
-
 private ListaBombas listaBombas;
 ArrayList<Explosion> explosiones;
-//private ListaAviones listaAviones;
+private ListaAviones listaAviones;
 //private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
 public void setup() {
@@ -26,24 +23,22 @@ public void setup() {
   sonido= new SoundFile(this, "music2.mp3");
   sonido.play();
   dron = new Dron();
+  dron2 = new Dron(2);
   listaBombas = new ListaBombas();
+  listaAviones = new ListaAviones();
+//  listaAvionesB = new ListaAviones();  
   escenario= new Escenario();
   estado = MaquinaEstado.Intro;
   explosiones = new ArrayList();
 //  frameRate(20);
-//  listaAviones = new ListaAviones();
-//  listaAvionesB = new ListaAviones();
+
   
 }
 /** Se dibuja el sketch*/
 public void draw() {
-  
  /* if(random(100)>=95){
     listaBombas.agregarBomba(new Bomba());
   }*/
- 
-
-
   if (estado==1) {
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
@@ -60,26 +55,49 @@ public void draw() {
     escenario.mostrarVida(dron);
     dron.display();
     dron.mover();
-     listaBombas.displayBombas(explosiones, escenario);
-  listaBombas.validarImpacto(dron);
-  for(int i=0;i<explosiones.size();i++){
-    Explosion e = explosiones.get(i);
-    e.display();
-  }
-    if (contador<= tiempoBomba) {
+    listaBombas.displayBombas(explosiones, escenario, cont);
+    listaBombas.validarImpacto(dron);
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
+    println(cont+"  Tamaño lista: "+listaBombas.getBombas().size());
+    if (listaBombas.getBandera()){
+      println(cont+"    cont");
+      cont--;
+    }
+    
+/*   if(random(100)>=95){
+      listaBombas.agregarBomba(new Bomba());
+    }
+/*    if (contador<= tiempoBomba) {
 
       if (contador==tiempoBomba) {
-        listaBombas.agregarBomba(new Bomba());
+        cont++;
+   //     listaBombas.agregarBomba(new Bomba());
       }
       contador++;
     } else {
       contador=1;
-    }
+    }*/
   }
   if ( estado==3) {
-    escenario.mostrarNivel();
+    escenario.mostrarEscenario();
+//    escenario.mostrarNivel();
     escenario.mostrarPuntaje(dron);
     escenario.mostrarVida(dron);
+    dron2.display();
+    dron2.mover();
+    listaAviones.displayAviones(explosiones, escenario);
+    listaAviones.validarImpacto(dron2);
+    if(cont<= timePlane){
+      if(cont==timePlane){
+        listaAviones.agregarAvion(new Avion( new PVector(8,0)));
+      } 
+      cont++;
+    }else{
+      cont=1;
+    }
   }
   if (estado==4) {
     escenario.mostrarNivel();
@@ -110,17 +128,19 @@ public void draw() {
   }
 }
 public void keyPressed() {
-  if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER));
-  {
-    estado = MaquinaEstado.Nivel_1;
+  if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
+    estado = MaquinaEstado.Nivel_2;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
   }
+  
+  
 
   
 /**  for(Avion ab:listaAvionesB.getAviones()){
     ab.mover(false);
   }
+
   if(contPlane<= timePlane){
 
     if(contPlane==timePlane){  
@@ -146,3 +166,9 @@ public void keyPressed() {
     cont=1;
   }*/
 }
+public void setCont(int cont){
+    this.cont=cont;
+  }
+  public int getCont(){
+    return this.cont;
+  }
