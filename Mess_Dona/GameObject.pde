@@ -1,4 +1,4 @@
-/** se define la clase */
+/** se define la clase abstracta GameObject */
 abstract class GameObject {
 
   /* ------Zona de atributos---------*/
@@ -12,7 +12,7 @@ abstract class GameObject {
 
   /**------Zona de constructores--------*/
 
-  public GameObject() {
+  public GameObject() { //constructor por defecto
   }
 
   /*--------Zona de operaciones-------*/

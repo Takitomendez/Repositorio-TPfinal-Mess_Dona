@@ -1,11 +1,16 @@
 /** Clase que gestiona los disparos realizados*/
 class ListaDisparos {
   private ArrayList<Disparo> disparos;
-
-  public ListaDisparos() {
+  
+/**------Zona de constructores-----------*/
+  public ListaDisparos() {     //construtor por Defecto
     this.disparos = new ArrayList();
   }
+
+  /**---------Zona de Metodos------------*/
+
   /** Elimina un disparo de la lista de disparos cuando
+
    el recorrido llega a la parte superior de la pantalla
    @ d: es el disparo que se evaluará si ha llegado a la parte superior*/
   public void evaluarEliminarDisparo(Disparo d) {
@@ -50,6 +55,7 @@ class ListaDisparos {
 
       float distance = nearestPoint.dist(jefe.getPosicion());
 
+
       if (distance <= jefe.getWidthFrame()/2 - 20) {
         isColliding = true;
         Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);
@@ -57,11 +63,12 @@ class ListaDisparos {
         disparos.remove(d);
         jefe.setVida(jefe.getVida()-1);
       }
+
     }
   }
 
 
-
+/**--------Zona de Metodos Accesores----------*/
   public ArrayList<Disparo> getDisparos() {
     return this.disparos;
   }
