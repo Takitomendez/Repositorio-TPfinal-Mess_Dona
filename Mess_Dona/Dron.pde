@@ -7,16 +7,15 @@ class Dron extends FrameObject {
 
   /** constructor parametrizado*/
   public Dron(int tipo) {
-    this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n1.png");
+    this.sprite = loadImage("Data/Sprites/DronPrincipal/dron.png");
     this.posicion = new PVector(width/2, height-150);
-    this.widthFrame = 61;
-    this.heightFrame =115;
+    this.widthFrame = 75;
+    this.heightFrame =153;
+    this.posXFrame=0;
+    this.posYFrame=0;
     this.tipo=tipo;
-    this.velocidad= new PVector(20, 0);
-    sprite.resize(61, 115);
-
- //error   this.velocidad= new PVector(8, 0);
-
+    this.estado=false;
+    sprite.resize(75, 268);
   }
   
   public Dron() {
@@ -26,17 +25,33 @@ class Dron extends FrameObject {
     this.heightFrame =51;
     this.tipo=2;
     sprite.resize(105, 51);
-
-
   }
 
 
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
   public void display() {
-    imageMode(CENTER);
-    image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
-//    frameRate(100);
+    if(tipo==1){
+      if(estado){
+       imageMode(CENTER);
+       PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);
+       image(frame,this.posicion.x-7,this.posicion.y-19);
+     }
+     if(estado==false){
+       imageMode(CENTER);
+       PImage frame = sprite.get(this.posXFrame+14,this.posYFrame+153,this.widthFrame-14,this.heightFrame-38);
+       image(frame,this.posicion.x,this.posicion.y);
+      }
+    }
+    if(tipo==3){
+      imageMode(CENTER);
+      PImage frame = sprite.get(this.posXFrame+14,this.posYFrame+153,this.widthFrame-14,this.heightFrame-38);
+      image(frame,this.posicion.x,this.posicion.y);
+      
+    }if(tipo==2){
+      imageMode(CENTER);
+      image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
+    }
   }
 
   public void mover() {
@@ -84,6 +99,7 @@ class Dron extends FrameObject {
     
     if(distance <= circle.getWidthFrame()/2){
       isColliding = true;
+      escenario.setContadorVida(escenario.getContadorVida()-1);
     }
     
   }
