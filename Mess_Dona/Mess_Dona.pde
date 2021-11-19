@@ -1,5 +1,5 @@
 
-import gifAnimation.*;
+//import gifAnimation.*;
 import ddf.minim.*;
 import processing.sound.*;
 
@@ -10,7 +10,7 @@ Minim minim;
 //SoundFile sonido;
 //SoundFile win;
 //SoundFile gameover;
-Gif gif; 
+//Gif gif; 
 
 Dron dron;
 Dron dron2;
@@ -51,8 +51,7 @@ public void setup() {
   dron = new Dron(1);
   dron2 = new Dron();
   dron3 = new Dron(3);
-  listaAviones = new ListaAviones();
-//  listaAvionesB = new ListaAviones();  
+  listaAviones = new ListaAviones(); 
   escenario= new Escenario();
   estado = MaquinaEstado.Intro;
   explosiones = new ArrayList();
@@ -97,7 +96,6 @@ public void draw() {
     }
   }
   
-  
   if ( estado==3) {
     escenario.mostrarNivel();
     escenario.mostrarPuntaje();
@@ -113,8 +111,6 @@ public void draw() {
   if(escenario.getPuntaje()==7){
    estado = 3;
   }
-  
-  
   if (estado==4) {
     escenario.mostrarNivel();
     escenario.mostrarPuntaje();
@@ -176,7 +172,7 @@ public void draw() {
 
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_3;
+    estado = MaquinaEstado.Nivel_1;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
     jefe.setVida(900);

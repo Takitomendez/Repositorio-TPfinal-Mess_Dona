@@ -48,17 +48,21 @@ class ListaBombas{
       boolean isColliding = true;
       
 
-      if((dron.getPosicion().x+dron.getWidthFrame()) <= b.getPosicion().x){
+      if((dron.getPosicion().x+dron.getWidthFrame()-14) <= b.getPosicion().x){
         isColliding = false;
+        dron.setEstado(false);
       }
       if(dron.getPosicion().x >= (b.getPosicion().x+b.getWidthFrame())){
         isColliding = false;
+        dron.setEstado(false);
       }
-      if((dron.getPosicion().y+dron.getHeightFrame()) <= b.getPosicion().y){
+      if((dron.getPosicion().y+dron.getHeightFrame()-38) <= b.getPosicion().y){
         isColliding = false;
+        dron.setEstado(true);
       }
       if(dron.getPosicion().y >= (b.getPosicion().y+b.getHeightFrame())){
         isColliding = false;
+        dron.setEstado(false);
       }
 
       if (isColliding) {
@@ -66,6 +70,7 @@ class ListaBombas{
         setCont(getCont()-1);
         escenario.setPuntaje(escenario.getPuntaje() + 1);
         colision=true;
+        dron.setEstado(true);
         }
       } 
     }

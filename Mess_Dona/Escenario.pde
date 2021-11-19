@@ -1,5 +1,5 @@
 /** se define la clase */
-import gifAnimation.*;
+//import gifAnimation.*;
 class Escenario {
 
   /* ------Zona de atributos---------*/
