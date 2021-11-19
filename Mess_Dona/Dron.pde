@@ -86,10 +86,6 @@ class Dron extends FrameObject {
       isColliding = true;
     }
     
-    if(isColliding){
-      escenario.setContadorVida(escenario.getContadorVida()-1);
-    }
-    gameover.play();
   }
  
   public void devolverBomba(Bomba bomba) {

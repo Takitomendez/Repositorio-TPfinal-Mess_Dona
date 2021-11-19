@@ -10,7 +10,7 @@ class Jefe extends FrameObject{
  
   public Jefe(){
     this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo2-enemigo.png");
-    this.velocidad= new PVector(25,20);
+    this.velocidad= new PVector(5,5);
     this.widthFrame= 330;
     this.heightFrame=330;
     this.posicion= new PVector(this.widthFrame,this.heightFrame);

@@ -1,3 +1,4 @@
+
 import gifAnimation.*;
 import ddf.minim.*;
 import processing.sound.*;
@@ -33,9 +34,9 @@ private ListaAviones listaAviones;
 /** Se establece la configuracion inicial*/
 public void setup() {
   size(1100, 700); // 1100,700
- // gif = new Gif(this, "descarga.gif"); //Se carga el archivo GIF del fondo del lienzo.
+ //  gif = new Gif(this, "descarga.gif"); //Se carga el archivo GIF del fondo del lienzo.
  // gif.play();
- // gif.resize(width,height);
+  
    minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
    minim = new Minim(this);
@@ -135,7 +136,8 @@ public void draw() {
   if (estado ==5) {
  
     imagen = loadImage("Data/Sprites/malvinas.gif");
-    imagen.resize(width, height);
+     imagen.resize(width, height);
+  //  gif.resize(width,height);
     background (imagen);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
@@ -155,10 +157,10 @@ public void draw() {
     textAlign(CENTER);
     textSize(30);
     fill(#FFFFFF);
-    
+     
     cont=29;
   }
-  if(escenario.getContadorVida()<=0){
+  if(escenario.getContadorVida()==0){
    estado=6;
   gameover.play();
    listaBombas.getBombas().clear();
@@ -173,7 +175,7 @@ public void draw() {
 
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_1;
+    estado = MaquinaEstado.Nivel_3;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
     jefe.setVida(900);

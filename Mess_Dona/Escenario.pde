@@ -1,5 +1,5 @@
 /** se define la clase */
-
+import gifAnimation.*;
 class Escenario {
 
   /* ------Zona de atributos---------*/
@@ -39,8 +39,9 @@ class Escenario {
   public void mostrarNivel() {
     
     if (getEstado()==2) {
+      
       imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
-      imagen.resize(width, height);
+     imagen.resize(width, height);
       background(imagen);
     }
     
@@ -64,9 +65,9 @@ class Escenario {
       fill(255, 0, 0);
     }
      rect(50, 50, jefe.getVida(), 30);
-     if(jefe.getVida()==0){
+   /*  if(jefe.getVida()==0){
       win.play();
-     }
+     }*/
   }
   
   /*--------Metodos accesores---------*/
