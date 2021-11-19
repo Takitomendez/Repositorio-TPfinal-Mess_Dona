@@ -68,6 +68,7 @@ public void draw() {
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
     background (imagen);
+    text("Utiliza el mouse para mover al dron",width/2,height-650);
     text("Pulsa ENTER para iniciar el juego", width/2, height-50);
     textAlign(CENTER);
     textSize(30);
