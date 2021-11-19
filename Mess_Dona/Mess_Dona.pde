@@ -101,8 +101,12 @@ public void draw() {
     escenario.mostrarVida();
     dron2.display();
     dron2.mover();
-    listaAviones.displayAviones(explosiones, escenario);
-    listaAviones.validarImpacto(dron2);
+    listaAviones.displayAviones(/*explosiones, */escenario);
+    listaAviones.validarImpacto(explosiones,dron2);
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
     if(random(100)>=90){
       listaAviones.agregarAvion(new Avion());
     }
@@ -140,6 +144,7 @@ public void draw() {
     textAlign(CENTER);
     textSize(30);
     fill(#FFFFFF);
+ //   jefe.explotar();
   }
   
   

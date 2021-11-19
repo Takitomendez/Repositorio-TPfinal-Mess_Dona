@@ -4,7 +4,7 @@ class Explosion extends FrameObject{
   private int posicionX;
   private int posicionY;
 
-  public Explosion(int posicionX) {
+  public Explosion(int posX) {
     sprite = requestImage("Data/Sprites/explosion_bomba.png");
     widthFrame = 64;
     heightFrame = 64;
@@ -12,8 +12,19 @@ class Explosion extends FrameObject{
     posYFrame=0;
     cantFrames = 25;
     contFrames = 1;
-    this.posicionX = posicionX;
+    this.posicionX = posX;
     this.posicionY = height-heightFrame/2;
+  }
+  public Explosion(int posX, int posY) {
+    sprite = requestImage("Data/Sprites/explosion_bomba.png");
+    widthFrame = 64;
+    heightFrame = 64;
+    posXFrame=0;
+    posYFrame=0;
+    cantFrames = 25;
+    contFrames = 1;
+    this.posicionX = posX;
+    this.posicionY = posY;
   }
 
   public void display() {

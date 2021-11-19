@@ -29,7 +29,21 @@ class Jefe extends FrameObject{
   
   }
   public void explotar(){
-  
+    frameRate(5);
+    PImage jefe = loadImage("Data/Sprites/AvionEnemigo/sprite-colisicion-dron-tipo2-enemigo.png");
+    jefe.resize(1060,538);
+    int ancho=353;
+    int alto=538;
+    int posX=0;
+    int posY=0;
+    PImage frame = jefe.get(posX,posY,ancho,alto);
+    imageMode(CENTER);
+    image(frame,width/2,height/2);
+    if(posX <= jefe.width-ancho){
+      posX+=ancho;
+    }else{
+      posX=0;
+    }
   }
   public void display(){
     PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);

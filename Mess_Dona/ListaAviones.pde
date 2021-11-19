@@ -13,26 +13,26 @@ class ListaAviones {
     aviones.add(unAvion);
   }
   
-  public void evaluarEliminarAvion(Avion a, ArrayList<Explosion> explosiones, Escenario vida) {
+  public void evaluarEliminarAvion(Avion a/*, ArrayList<Explosion> explosiones*/, Escenario vida) {
     if (a.getPosicion().x > width) {
-      Explosion unaExplosion = new Explosion((int)a.getPosicion().x);
+ //     Explosion unaExplosion = new Explosion((int)a.getPosicion().x);
       //unaExplosion.display();
-      explosiones.add(unaExplosion);
+ //     explosiones.add(unaExplosion);
       aviones.remove(a);
       escenario.setPuntaje(escenario.getPuntaje()+1);
     }
   }
   
-  public void displayAviones( ArrayList<Explosion> explosiones, Escenario vida) {
+  public void displayAviones( /*ArrayList<Explosion> explosiones, */Escenario vida) {
     for (int i=0; i<aviones.size(); i++) {
       Avion a = aviones.get(i);
       a.display();
 
-      evaluarEliminarAvion(a,explosiones, vida);
+      evaluarEliminarAvion(a,/*explosiones, */vida);
     }
   }
   
-  public void validarImpacto(Dron dron) {
+  public void validarImpacto(ArrayList<Explosion> explosiones, Dron dron) {
     for (int i=0; i<aviones.size(); i++) {
       Avion a = aviones.get(i);
       boolean isColliding = true;
@@ -53,6 +53,8 @@ class ListaAviones {
       if (isColliding) {
         aviones.remove(a);
         escenario.setContadorVida(escenario.getContadorVida()-1);
+        Explosion unaExplosion = new Explosion((int)a.getPosicion().x,(int)a.getPosicion().y);
+        explosiones.add(unaExplosion);
         }
       
       } 
