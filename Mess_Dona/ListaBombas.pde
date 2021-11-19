@@ -8,15 +8,11 @@ class ListaBombas{
   
   public ListaBombas(){
     this.bombas= new ArrayList();
-    for (int i=0; i<=70;i++){
+    for (int i=0; i<=30;i++){
       Bomba b=new Bomba();
       agregarBomba(b);
     }
   }
- /*public void reset(){
-  bombas.size()=0;
- }*/
-
   public void agregarBomba(Bomba unaBomba){
     bombas.add(unaBomba);
   }
@@ -25,7 +21,6 @@ class ListaBombas{
     this.band=false;
     if (b.getPosicion().y > height) {
       Explosion unaExplosion = new Explosion((int)b.getPosicion().x);
-      //unaExplosion.display();
       explosiones.add(unaExplosion);
       bombas.remove(b);
       vida.setContadorVida(vida.getContadorVida() - 1);
@@ -69,7 +64,6 @@ class ListaBombas{
         bombas.remove(b);
         setCont(getCont()-1);
         escenario.setPuntaje(escenario.getPuntaje() + 1);
-        println(escenario.getPuntaje());
         colision=true;
         }
       } 

@@ -13,15 +13,12 @@ class Escenario {
 
 
   public Escenario() {
-//    this.imagen= loadImage("Data/Sprites/Escenario/fondo-selva.gif");
-//    imagen.resize(width, height);
     this.puntaje=0;
     this.vida= loadImage("Data/Sprites/Vida.png");
     vida.resize(60, 60);
     contadorVida = 3;
   }
   public void mostrarEscenario() {
- //   background(imagen);
   }
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
@@ -58,9 +55,14 @@ class Escenario {
         background(imagen);
     }
   }
-
-
-
+  
+  public void mostrarVidaJefe(Jefe jefe){
+    fill(255,0,0);
+    rect(20,20,jefe.getVida(),30);
+  }
+  
+  
+  
   /*--------Metodos accesores---------*/
 
   /** se colocan los metodos accesores */

@@ -11,7 +11,7 @@ class Bomba extends FrameObject{
   public Bomba(){
     this.sprite = loadImage("Data/Sprites/Bomba/bomba.png");
     this.posicion= new PVector(random(20,width-20),-50);
-    this.velocidad= new PVector(0,13);
+    this.velocidad= new PVector(0,20);
     this.widthFrame= 38;
     this.heightFrame=66;
     this.posXFrame=0;
@@ -25,7 +25,6 @@ class Bomba extends FrameObject{
  /** se definen las operaciones a realizar */
   public void display(){
     PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);
-//    frame.resize(150,66);
     imageMode(CENTER);
     image(frame,this.posicion.x,this.posicion.y);
     if(this.posXFrame <= sprite.width-this.widthFrame){
@@ -34,25 +33,11 @@ class Bomba extends FrameObject{
       posXFrame=0;
     }
     mover();
-//    frameRate(30);
-/*    if(this.estado != false){
-    
-    image(sprite.get(widthFrame*p,posYFrame,widthFrame,heightFrame),posicion.x,posicion.y);
-    }
-
-    frameRate(8);*/
-
   }
+  
+  
   public void mover(){
     this.posicion.add(this.velocidad);
- /*   if(posXFrame<3){
-      posXFrame++;
-    }
-    else{
-      posXFrame=0;
-    }
-    display(posXFrame);*/
-    
   }
 
   public void validar(){
