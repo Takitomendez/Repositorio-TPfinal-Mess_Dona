@@ -27,7 +27,5 @@ class Disparo extends FrameObject{
   public void move(){
     this.posicion.add(velocidad);
   }
-  
-  // ---------METODOS ACCESORES----------
 
 }

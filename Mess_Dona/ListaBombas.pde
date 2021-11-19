@@ -8,7 +8,7 @@ class ListaBombas{
   
   public ListaBombas(){
     this.bombas= new ArrayList();
-    for (int i=0; i<=30;i++){
+    for (int i=0; i<=28;i++){
       Bomba b=new Bomba();
       agregarBomba(b);
     }

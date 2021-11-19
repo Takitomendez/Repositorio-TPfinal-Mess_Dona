@@ -22,12 +22,7 @@ class Jefe extends FrameObject{
  
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
-  public void invocarAvion(ListaAviones listaAviones){
-    
-  }
-  public void invocarBomba(ListaBombas listaBombas){
-  
-  }
+
   public void explotar(){
     frameRate(5);
     PImage jefe = loadImage("Data/Sprites/AvionEnemigo/sprite-colisicion-dron-tipo2-enemigo.png");

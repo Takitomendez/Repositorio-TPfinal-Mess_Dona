@@ -20,7 +20,7 @@ Jefe jefe;
 int tiempoBomba =200;
 int contador=1;
 int timePlane=25;
-int cont=29;
+int cont=28;
 
 private int estado;
 PImage imagen;
@@ -31,7 +31,7 @@ private ListaAviones listaAviones;
 //private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
 public void setup() {
-  size(1100,762); // 1100,700
+  size(1100,762); 
   
   animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
   
@@ -44,9 +44,6 @@ public void setup() {
   win = minim.loadFile("Data/Victoria.mp3");
    minim = new Minim(this);
   gameover = minim.loadFile("Data/Derrota.mp3");
-//   sonido= new SoundFile(this, "music2.mp3");
-//  win= new SoundFile(this, "Victoria.mp3");
-//   gameover= new SoundFile(this, "Derrota.mp3");
    sonido.play();
    
   dron = new Dron(1);
@@ -109,7 +106,7 @@ public void draw() {
       listaAviones.agregarAvion(new Avion());
     }
   }
-  if(escenario.getPuntaje()==7){
+  if(escenario.getPuntaje()==25){
    estado = 3;
   }
   if (estado==4) {
@@ -129,17 +126,14 @@ public void draw() {
       e.display();
     }
   }
-  if(escenario.getPuntaje()==20){
+  if(escenario.getPuntaje()==70){
    estado=4;
    escenario.setPuntaje(0);
   }
   
   
   if (estado ==5) {
- 
- //   imagen = loadImage("Data/Sprites/malvinas.gif");
- //    imagen.resize(width, height);
-  
+
     background (animation);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
@@ -160,7 +154,7 @@ public void draw() {
     textSize(30);
     fill(#FFFFFF);
      
-    cont=29;
+    cont=28;
   }
   if(escenario.getContadorVida()==0){
    estado=6;
@@ -177,7 +171,7 @@ public void draw() {
 
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_3;
+    estado = MaquinaEstado.Nivel_1;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
     jefe.setVida(900);
