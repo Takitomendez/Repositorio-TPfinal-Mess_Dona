@@ -2,15 +2,17 @@
 //import gifAnimation.*;
 import ddf.minim.*;  //importa la biblioteca minim
 import processing.sound.*; // importa la biblioteca sound
+import gifAnimation.*;
 
 AudioPlayer sonido;    //crea un objeto de la biblioteca AudioPlayer
 AudioPlayer win;       //crea un objeto de la biblioteca AudioPlayer 
 AudioPlayer gameover;  //crea un objeto de la biblioteca AudioPlayer
 Minim minim;           //crea un objeto de la biblioteca Minim
-//SoundFile sonido;
-//SoundFile win;
-//SoundFile gameover;
-//Gif gif; 
+
+
+
+Gif animation; 
+
 
 Dron dron;         //crea un objeto de la clase Dron
 Dron dron2;        // crea un objeto de la clase dron tipo 2
@@ -22,7 +24,7 @@ Jefe jefe;    //crea al objeto jefe
 int tiempoBomba =200;       
 int contador=1;
 int timePlane=25;
-int cont=29;
+int cont=28;
 
 private int estado;
 PImage imagen;
@@ -36,9 +38,12 @@ private ListaAviones listaAviones;
 /**----------- Se establece la configuracion inicial------------*/
 
 public void setup() {
-  size(1100, 700); // 1100,700
- //  gif = new Gif(this, "descarga.gif"); //Se carga el archivo GIF del fondo del lienzo.
- // gif.play();
+  size(1100,762); 
+  
+  animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
+  
+  animation.play();
+  
   
    minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
@@ -46,9 +51,6 @@ public void setup() {
   win = minim.loadFile("Data/Victoria.mp3");
    minim = new Minim(this);
   gameover = minim.loadFile("Data/Derrota.mp3");
-//   sonido= new SoundFile(this, "music2.mp3");
-//  win= new SoundFile(this, "Victoria.mp3");
-//   gameover= new SoundFile(this, "Derrota.mp3");
    sonido.play();
    
   dron = new Dron(1);
@@ -106,13 +108,17 @@ public void draw() {
     escenario.mostrarVida();
     dron2.display();
     dron2.mover();
-    listaAviones.displayAviones(explosiones, escenario);
-    listaAviones.validarImpacto(dron2);
+    listaAviones.displayAviones( escenario);
+    listaAviones.validarImpacto(explosiones,dron2);
     if(random(100)>=90){
       listaAviones.agregarAvion(new Avion());
     }
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
   }
-  if(escenario.getPuntaje()==7){
+  if(escenario.getPuntaje()==25){
    estado = 3;
   }
   if (estado==4) {             //dibjua el contenido para el nivel 3
@@ -127,24 +133,27 @@ public void draw() {
     dron3.collide(jefe);
     listDisparos.displayDisparos();
     listDisparos.validarImpacto(jefe, explosiones);
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
   }
-  if(escenario.getPuntaje()==20){
+  if(escenario.getPuntaje()==70){
    estado=4;
    escenario.setPuntaje(0);
   }
   
   
+
   if (estado ==5) {     //dibuja el contenido en caso de Victoria
- 
-    imagen = loadImage("Data/Sprites/malvinas.gif");
-     imagen.resize(width, height);
-  //  gif.resize(width,height);
-    background (imagen);
+
+    background (animation);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
     textSize(30);
     fill(#FFFFFF);
+    cont=28;
   }
   
   
@@ -159,7 +168,7 @@ public void draw() {
     textSize(30);
     fill(#FFFFFF);
      
-    cont=29;
+    cont=28;
   }
   if(escenario.getContadorVida()==0){
    estado=6;

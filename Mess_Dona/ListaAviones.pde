@@ -14,26 +14,30 @@ class ListaAviones {
     aviones.add(unAvion);
   }
   
-  public void evaluarEliminarAvion(Avion a, ArrayList<Explosion> explosiones, Escenario vida) {     //elimina un avion de la listaAviones
+
+  public void evaluarEliminarAvion(Avion a, Escenario vida) {     //elimina un avion de la listaAviones
     if (a.getPosicion().x > width) {
-      Explosion unaExplosion = new Explosion((int)a.getPosicion().x);   //crea un objeto de la clase Explosion
-      //unaExplosion.display();
-      explosiones.add(unaExplosion);
+
+
       aviones.remove(a);
       escenario.setPuntaje(escenario.getPuntaje()+1);  //suma al puntaje 1 punto
     }
   }
   
-  public void displayAviones( ArrayList<Explosion> explosiones, Escenario vida) {      //dibuja a los aviones de la lista
+
+  public void displayAviones( Escenario vida) {  //dibuja a los aviones de la lista
+
     for (int i=0; i<aviones.size(); i++) {
       Avion a = aviones.get(i);
       a.display();
 
-      evaluarEliminarAvion(a,explosiones, vida);
+      evaluarEliminarAvion(a,vida);
     }
   }
   
-  public void validarImpacto(Dron dron) {        // evalua la colision entre aviones y dron
+
+  public void validarImpacto(ArrayList<Explosion> explosiones, Dron dron) {      //evalua la colision entre dron y avion
+
     for (int i=0; i<aviones.size(); i++) {
       Avion a = aviones.get(i);
       boolean isColliding = true;
@@ -53,7 +57,11 @@ class ListaAviones {
       
       if (isColliding) {       //verifica si hay colision
         aviones.remove(a);
-        escenario.setContadorVida(escenario.getContadorVida()-1);   //si existe colision se descuenta una vida
+
+        escenario.setContadorVida(escenario.getContadorVida()-1);    //si existe colision se descuenta una vida al dron
+        Explosion unaExplosion = new Explosion((int)a.getPosicion().x,(int)a.getPosicion().y);
+        explosiones.add(unaExplosion);
+
         }
       
       } 

@@ -8,7 +8,8 @@ class Escenario {
   private PImage imagen;
   private PImage vida;
   private int puntaje;
-  private int contadorVida ;  
+  private int contadorVida ;
+
   
   /**-------Zona de Contructores-----*/
 
@@ -19,11 +20,12 @@ class Escenario {
     contadorVida = 3;
   }
 
+  
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
-  public void display() {         //dibuja al escenario en el lienzo
-  }
+ 
   public void mostrarPuntaje() {   // muestra el puntaje con el escenario
+
     textSize(30);
     fill(#FFFFFF);
     textAlign(CENTER);
@@ -38,7 +40,7 @@ class Escenario {
   public void mostrarNivel() {      //muestra el nivel en el escenario
     
     if (getEstado()==2) {
-      
+     
       imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
      imagen.resize(width, height);
       background(imagen);
@@ -64,9 +66,7 @@ class Escenario {
       fill(255, 0, 0);
     }
      rect(50, 50, jefe.getVida(), 30);
-   /*  if(jefe.getVida()==0){
-      win.play();
-     }*/
+  
   }
     public void mostrarEscenario() {          //muestra al escenario
   }

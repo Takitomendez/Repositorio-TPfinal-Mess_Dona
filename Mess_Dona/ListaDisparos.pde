@@ -6,9 +6,11 @@ class ListaDisparos {
   public ListaDisparos() {     //construtor por Defecto
     this.disparos = new ArrayList();
   }
+
   /**---------Zona de Metodos------------*/
-  
-  /** Elimina un disparo de la lista de disparos cuando 
+
+  /** Elimina un disparo de la lista de disparos cuando
+
    el recorrido llega a la parte superior de la pantalla
    @ d: es el disparo que se evaluará si ha llegado a la parte superior*/
   public void evaluarEliminarDisparo(Disparo d) {
@@ -32,33 +34,39 @@ class ListaDisparos {
     for (int i=0; i<disparos.size(); i++) {
       Disparo d = disparos.get(i);
 
-          boolean existeColision = true;
-          if (d.getPosicion().x> jefe.getPosicion().x-jefe.getWidthFrame()/2+jefe.getWidthFrame()) {
-            existeColision = false;
-          }
+      boolean isColliding = false;
+      // find the nearest point bettwen the rectangle and the circle
+      // first this point using the position of circle
+      PVector nearestPoint = new PVector(jefe.getPosicion().x, jefe.getPosicion().y);
+      // update the x component of the neares point to ends of the rectangle on x axis
+      if (nearestPoint.x < d.posicion.x) {
+        nearestPoint.x = d.posicion.x;
+      }
+      if (nearestPoint.x > d.posicion.x+d.widthFrame) {
+        nearestPoint.x = d.posicion.x+d.widthFrame;
+      }
+      // update the y component of the neares point to ends of the rectangle on y axis
+      if (nearestPoint.y < d.posicion.y) {
+        nearestPoint.y = d.posicion.y;
+      }
+      if (nearestPoint.y > d.posicion.y+d.heightFrame) {
+        nearestPoint.y = d.posicion.y+d.heightFrame;
+      }
 
-          if (d.getPosicion().x< jefe.getPosicion().x-jefe.getWidthFrame()/2) {
-            existeColision = false;
-          }
+      float distance = nearestPoint.dist(jefe.getPosicion());
 
-          if (d.getPosicion().y > jefe.getPosicion().y+jefe.getWidthFrame()/2) {
-            existeColision = false;
-          }
 
-          if (d.getPosicion().y< jefe.getPosicion().y) {
-            existeColision = false;
-          }
+      if (distance <= jefe.getWidthFrame()/2 - 20) {
+        isColliding = true;
+        Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);
+        explosiones.add(unaExplosion);
+        disparos.remove(d);
+        jefe.setVida(jefe.getVida()-1);
+      }
 
-          if (existeColision) {         //verifica si hay colision
-    //        Explosion unaExplosion = new Explosion((int)jefe.getPosicion().x,(int)jefe.getPosicion().y);
-            //unaExplosion.display();
-      //      explosiones.add(unaExplosion);
-            disparos.remove(d);
-            jefe.setVida(jefe.getVida()-5);     //disminuye en 5 la vida del jefe
-          }
-        }
-      
     }
+  }
+
 
 /**--------Zona de Metodos Accesores----------*/
   public ArrayList<Disparo> getDisparos() {

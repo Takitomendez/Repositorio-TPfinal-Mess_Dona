@@ -11,7 +11,7 @@ class Bomba extends FrameObject{
   public Bomba(){
     this.sprite = loadImage("Data/Sprites/Bomba/bomba.png");  //carga la imagen desde Data
     this.posicion= new PVector(random(20,width-20),-50);
-    this.velocidad= new PVector(0,5);
+    this.velocidad= new PVector(0,20);
     this.widthFrame= 38;
     this.heightFrame=66;
     this.posXFrame=0;
@@ -40,9 +40,6 @@ class Bomba extends FrameObject{
     this.posicion.add(this.velocidad);
   }
 
-  public void validar(){
-
-  }
   
   /*--------Metodos accesores---------*/
   /** se colocan los metodos accesores*/ 

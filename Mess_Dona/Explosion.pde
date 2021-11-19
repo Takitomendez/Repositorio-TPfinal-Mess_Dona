@@ -7,21 +7,38 @@ class Explosion extends FrameObject{
   private int contFrames;    //contador de frames visualizados
   private int posicionX;
   private int posicionY;
+
   
  /**------------Zona de constructores-------------*/
- 
-  public Explosion(int posicionX) {       //Constructor parametrizado 
+
+
+  public Explosion(int posX) {   //constructor parametrizado
     sprite = requestImage("Data/Sprites/explosion_bomba.png"); // carga la imagen desde Data
+ 
     widthFrame = 64;
     heightFrame = 64;
     posXFrame=0;
     posYFrame=0;
     cantFrames = 25;
     contFrames = 1;
-    this.posicionX = posicionX;
+    this.posicionX = posX;
     this.posicionY = height-heightFrame/2;
   }
+
 /**-------------Zona de Métodos------------*/
+
+  public Explosion(int posX, int posY) {
+    sprite = requestImage("Data/Sprites/explosion_bomba.png");
+    widthFrame = 64;
+    heightFrame = 64;
+    posXFrame=0;
+    posYFrame=0;
+    cantFrames = 25;
+    contFrames = 1;
+    this.posicionX = posX;
+    this.posicionY = posY;
+  }
+
 
   public void display() {    //Dibuja a la explosion en el lienzo
     imageMode(CENTER);

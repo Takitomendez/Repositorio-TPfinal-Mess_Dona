@@ -10,7 +10,7 @@ class ListaBombas{
   
   public ListaBombas(){      //constructor por defecto
     this.bombas= new ArrayList();
-    for (int i=0; i<=30;i++){
+    for (int i=0; i<=28;i++){
       Bomba b=new Bomba();
       agregarBomba(b);
     }
@@ -38,12 +38,7 @@ class ListaBombas{
     Bomba b = bombas.get(i);
     b.display();
     evaluarEliminarBomba(b,explosiones, vida);
-/*    for (int i=0; i<bombas.size(); i++) {
-      Bomba b = bombas.get(i);
-      b.display();
 
-      evaluarEliminarBomba(b,explosiones, vida);
-    }*/
   }
   
   
@@ -79,16 +74,9 @@ class ListaBombas{
         }
       } 
     }
-/*  public void removerBombas(){
-    for(int i= bombas.size()-1;i>=0;i--){
-      if(bombas.get(i).isEstado() == false){
-        bombas.remove(i);
-      }
-    }  
-  }*/
-  
+
   /**-----------Zona de Metodos Accesores------------*/
-  
+
   public boolean getBandera(){
     return this.band;
   }
