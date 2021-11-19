@@ -1,11 +1,11 @@
-/** se define la clase */
+/** se define la clase Avion que hereda de FrameObject */
 class Avion extends FrameObject{
   
   /**------Zona de constructores--------*/
   
   
   public Avion(){
-    this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo1-enemigo.png");
+    this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo1-enemigo.png");  // carga la imagen desde Data
     this.posicion= new PVector(-50,random(20,height-20));
     this.velocidad= new PVector(7,0);
     this.widthFrame= 105;
@@ -16,8 +16,8 @@ class Avion extends FrameObject{
   
  /*--------Zona de operaciones-------*/
  /** se definen las operaciones a realizar */
-  public void display(){
-    imageMode(CENTER);
+  public void display(){         //
+    imageMode(CENTER);           //
     image(sprite,posicion.x,posicion.y);
     mover();
 
