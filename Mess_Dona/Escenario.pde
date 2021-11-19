@@ -63,7 +63,7 @@ class Escenario {
     } else {
       fill(255, 0, 0);
     }
-     rect(50, 50, jefe.getVida(), 30);
+     rect(30, 50, jefe.getVida(), 30);
   
   }
   

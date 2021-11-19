@@ -1,12 +1,18 @@
 /** se define la clase */
+
+import ddf.minim.*;
 class Dron extends FrameObject {
   private int tipo;
-
+ // AudioPlayer shoot;
+//  Minim minim;
+  
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
 
   /** constructor parametrizado*/
   public Dron(int tipo) {
+//    minim = new Minim(this);
+//    shoot = minim.loadFile("Data/shot.mp3");
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron.png");
     this.posicion = new PVector(width/2, height-150);
     this.widthFrame = 75;
@@ -72,6 +78,9 @@ class Dron extends FrameObject {
 
       Disparo disparo = new Disparo(pos, new PVector(0, -20));
       disparos.add(disparo);
+      shoot.play();
+      shoot.rewind();
+      
     }
   }
 

@@ -6,10 +6,9 @@ import ddf.minim.*;
 AudioPlayer sonido;
 AudioPlayer win;
 AudioPlayer gameover;
+AudioPlayer shoot;
 Minim minim;
-
 Gif animation; 
-
 Dron dron;
 Dron dron2;
 Dron dron3;
@@ -34,17 +33,16 @@ public void setup() {
   size(1100,762); 
   
   animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
-  
   animation.play();
-  
-  
-   minim = new Minim(this);
+  minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   win = minim.loadFile("Data/Victoria.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   gameover = minim.loadFile("Data/Derrota.mp3");
-   sonido.play();
+  minim = new Minim(this);
+  shoot = minim.loadFile("Data/shoot.mpeg");
+  sonido.play();
    
   dron = new Dron(1);
   dron2 = new Dron();
@@ -130,7 +128,7 @@ public void draw() {
       e.display();
     }
   }
-  if(escenario.getPuntaje()==70){
+  if(escenario.getPuntaje()==100){
    estado=4;
    escenario.setPuntaje(0);
   }
@@ -176,10 +174,10 @@ public void draw() {
 
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_1;
+    estado = MaquinaEstado.Nivel_3;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
-    jefe.setVida(900);
+    jefe.setVida(1040);
     listaBombas = new ListaBombas();
     sonido.rewind();
     sonido.play();

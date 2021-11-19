@@ -1,6 +1,10 @@
 /** Clase que gestiona los disparos realizados*/
+
 class ListaDisparos {
+  
   private ArrayList<Disparo> disparos;
+  
+  
 
   public ListaDisparos() {
     this.disparos = new ArrayList();
@@ -8,9 +12,9 @@ class ListaDisparos {
   /** Elimina un disparo de la lista de disparos cuando
    el recorrido llega a la parte superior de la pantalla
    @ d: es el disparo que se evaluará si ha llegado a la parte superior*/
-  public void evaluarEliminarDisparo(Disparo d) {
+  public void evaluarEliminarDisparo(Disparo d) { 
     if (d.getPosicion().y < 0) {
-      disparos.remove(d);
+      disparos.remove(d);    
     }
   }
 
