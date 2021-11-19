@@ -26,6 +26,9 @@ class ListaBombas{
       vida.setContadorVida(vida.getContadorVida() - 1);
       this.band=true;
     }
+    /*if(vida.getContadorVida()==0){
+     gameover.play();
+    }*/
   }
   
   public void displayBombas( ArrayList<Explosion> explosiones, Escenario vida, int i) {

@@ -64,7 +64,11 @@ class Escenario {
       fill(255, 0, 0);
     }
      rect(50, 50, jefe.getVida(), 30);
+     if(jefe.getVida()==0){
+      win.play();
+     }
   }
+  
   /*--------Metodos accesores---------*/
 
   /** se colocan los metodos accesores */

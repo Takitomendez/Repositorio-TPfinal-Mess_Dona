@@ -54,6 +54,9 @@ class ListaAviones {
         aviones.remove(a);
         escenario.setContadorVida(escenario.getContadorVida()-1);
         }
+      /*  if(escenario.getContadorVida()==0){
+         gameover.play();
+        }*/
       } 
     }
   

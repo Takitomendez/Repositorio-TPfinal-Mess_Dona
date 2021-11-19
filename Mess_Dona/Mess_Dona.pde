@@ -142,13 +142,13 @@ public void draw() {
   }
   if(escenario.getContadorVida()<=0){
    estado=6;
-   gameover.play();
+ //  gameover.play();
    listaBombas.getBombas().clear();
    listaAviones.getAviones().clear();
   }
   if(jefe.getVida() <= 0){
     estado=5;
-    win.play();
+   // win.play();
   }
 }
 
@@ -160,6 +160,9 @@ public void keyPressed() {
     escenario.setPuntaje(0);
     jefe.setVida(900);
     listaBombas = new ListaBombas();
+    
+    win.stop();
+    gameover.stop();
   }
 }
 
