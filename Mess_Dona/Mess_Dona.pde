@@ -1,9 +1,15 @@
+import gifAnimation.*;
+import ddf.minim.*;
 import processing.sound.*;
 
-
-SoundFile sonido;
-SoundFile win;
-SoundFile gameover;
+AudioPlayer sonido;
+AudioPlayer win;
+AudioPlayer gameover;
+Minim minim;
+//SoundFile sonido;
+//SoundFile win;
+//SoundFile gameover;
+Gif gif; 
 
 Dron dron;
 Dron dron2;
@@ -26,11 +32,19 @@ private ListaAviones listaAviones;
 //private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
 public void setup() {
-  size(1100, 700);
-  
-   sonido= new SoundFile(this, "music2.mp3");
-   win= new SoundFile(this, "Victoria.mp3");
-   gameover= new SoundFile(this, "Derrota.mp3");
+  size(1100, 700); // 1100,700
+ // gif = new Gif(this, "descarga.gif"); //Se carga el archivo GIF del fondo del lienzo.
+ // gif.play();
+ // gif.resize(width,height);
+   minim = new Minim(this);
+  sonido = minim.loadFile("Data/music2.mp3");
+   minim = new Minim(this);
+  win = minim.loadFile("Data/Victoria.mp3");
+   minim = new Minim(this);
+  gameover = minim.loadFile("Data/Derrota.mp3");
+//   sonido= new SoundFile(this, "music2.mp3");
+//  win= new SoundFile(this, "Victoria.mp3");
+//   gameover= new SoundFile(this, "Derrota.mp3");
    sonido.play();
    
   dron = new Dron(1);
@@ -59,7 +73,8 @@ public void draw() {
     fill(#FFFFFF);
   }
   if(estado==5 || estado==6){
-   sonido.stop();
+  
+  sonido.pause();
   }
   
   
@@ -118,8 +133,11 @@ public void draw() {
   
   
   if (estado ==5) {
-  
-    text("SALVASTE LAS MALVINAS!!!", width/2, height-50);
+ 
+    imagen = loadImage("Data/Sprites/malvinas.gif");
+    imagen.resize(width, height);
+    background (imagen);
+    text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
     textSize(30);
@@ -128,7 +146,7 @@ public void draw() {
   
   
   if (estado==6) {
-   
+ 
     imagen = loadImage("Data/Sprites/Game Over.png");
     imagen.resize(width, height);
     background (imagen);
@@ -142,13 +160,13 @@ public void draw() {
   }
   if(escenario.getContadorVida()<=0){
    estado=6;
- //  gameover.play();
+  gameover.play();
    listaBombas.getBombas().clear();
    listaAviones.getAviones().clear();
   }
   if(jefe.getVida() <= 0){
     estado=5;
-   // win.play();
+    win.play();
   }
 }
 
@@ -160,9 +178,12 @@ public void keyPressed() {
     escenario.setPuntaje(0);
     jefe.setVida(900);
     listaBombas = new ListaBombas();
-    
-    win.stop();
-    gameover.stop();
+    sonido.rewind();
+    sonido.play();
+    win.pause();
+    win.rewind();
+    gameover.pause();
+    gameover.rewind();
   }
 }
 
