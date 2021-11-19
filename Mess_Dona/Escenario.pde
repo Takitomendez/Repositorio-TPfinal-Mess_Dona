@@ -1,3 +1,4 @@
+import gifAnimation.*;
 /** se define la clase */
 //import gifAnimation.*;
 class Escenario {
@@ -8,6 +9,7 @@ class Escenario {
   private PImage vida;
   private int puntaje;
   private int contadorVida ;
+  private Gif animation;
   /**-------Zona de Contructores-----*/
 
 
@@ -17,6 +19,7 @@ class Escenario {
     this.vida= loadImage("Data/Sprites/Vida.png");
     vida.resize(60, 60);
     contadorVida = 3;
+    
   }
   public void mostrarEscenario() {
   }

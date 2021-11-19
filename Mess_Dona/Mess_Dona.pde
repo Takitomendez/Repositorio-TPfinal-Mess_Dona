@@ -1,16 +1,16 @@
 
-//import gifAnimation.*;
+
+
+import gifAnimation.*;
 import ddf.minim.*;
-import processing.sound.*;
+
 
 AudioPlayer sonido;
 AudioPlayer win;
 AudioPlayer gameover;
 Minim minim;
-//SoundFile sonido;
-//SoundFile win;
-//SoundFile gameover;
-//Gif gif; 
+
+Gif animation; 
 
 Dron dron;
 Dron dron2;
@@ -33,9 +33,12 @@ private ListaAviones listaAviones;
 //private ListaAviones listaAvionesB;
 /** Se establece la configuracion inicial*/
 public void setup() {
-  size(1100, 700); // 1100,700
- //  gif = new Gif(this, "descarga.gif"); //Se carga el archivo GIF del fondo del lienzo.
- // gif.play();
+  size(1100,762); // 1100,700
+  
+  animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
+  
+  animation.play();
+  
   
    minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
@@ -102,12 +105,8 @@ public void draw() {
     escenario.mostrarVida();
     dron2.display();
     dron2.mover();
-    listaAviones.displayAviones(/*explosiones, */escenario);
-    listaAviones.validarImpacto(explosiones,dron2);
-    for(int i=0;i<explosiones.size();i++){
-      Explosion e = explosiones.get(i);
-      e.display();
-    }
+    listaAviones.displayAviones(explosiones, escenario);
+    listaAviones.validarImpacto(dron2);
     if(random(100)>=90){
       listaAviones.agregarAvion(new Avion());
     }
@@ -136,16 +135,15 @@ public void draw() {
   
   if (estado ==5) {
  
-    imagen = loadImage("Data/Sprites/malvinas.gif");
-     imagen.resize(width, height);
-  //  gif.resize(width,height);
-    background (imagen);
+ //   imagen = loadImage("Data/Sprites/malvinas.gif");
+ //    imagen.resize(width, height);
+  
+    background (animation);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
     textSize(30);
     fill(#FFFFFF);
- //   jefe.explotar();
   }
   
   
@@ -177,13 +175,13 @@ public void draw() {
 
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_1;
+    estado = MaquinaEstado.Nivel_3;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
     jefe.setVida(900);
     listaBombas = new ListaBombas();
     sonido.rewind();
-    sonido.play();
+  //  sonido.play();
     win.pause();
     win.rewind();
     gameover.pause();

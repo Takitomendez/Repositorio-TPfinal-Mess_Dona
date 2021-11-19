@@ -99,7 +99,7 @@ class Dron extends FrameObject {
     
     if(distance <= circle.getWidthFrame()/2){
       isColliding = true;
-      escenario.setContadorVida(escenario.getContadorVida()-1);
+    //  escenario.setContadorVida(escenario.getContadorVida()-1);
     }
     
   }
