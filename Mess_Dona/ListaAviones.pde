@@ -13,22 +13,20 @@ class ListaAviones {
     aviones.add(unAvion);
   }
   
-  public void evaluarEliminarAvion(Avion a/*, ArrayList<Explosion> explosiones*/, Escenario vida) {
+  public void evaluarEliminarAvion(Avion a, Escenario vida) {
     if (a.getPosicion().x > width) {
- //     Explosion unaExplosion = new Explosion((int)a.getPosicion().x);
-      //unaExplosion.display();
- //     explosiones.add(unaExplosion);
+
       aviones.remove(a);
       escenario.setPuntaje(escenario.getPuntaje()+1);
     }
   }
   
-  public void displayAviones( /*ArrayList<Explosion> explosiones, */Escenario vida) {
+  public void displayAviones( Escenario vida) {
     for (int i=0; i<aviones.size(); i++) {
       Avion a = aviones.get(i);
       a.display();
 
-      evaluarEliminarAvion(a,/*explosiones, */vida);
+      evaluarEliminarAvion(a,vida);
     }
   }
   

@@ -1,6 +1,4 @@
 
-
-
 import gifAnimation.*;
 import ddf.minim.*;
 
@@ -105,8 +103,8 @@ public void draw() {
     escenario.mostrarVida();
     dron2.display();
     dron2.mover();
-    listaAviones.displayAviones(explosiones, escenario);
-    listaAviones.validarImpacto(dron2);
+    listaAviones.displayAviones( escenario);
+    listaAviones.validarImpacto(explosiones,dron2);
     if(random(100)>=90){
       listaAviones.agregarAvion(new Avion());
     }
@@ -126,6 +124,10 @@ public void draw() {
     dron3.collide(jefe);
     listDisparos.displayDisparos();
     listDisparos.validarImpacto(jefe, explosiones);
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
   }
   if(escenario.getPuntaje()==20){
    estado=4;

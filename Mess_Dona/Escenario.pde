@@ -1,4 +1,3 @@
-import gifAnimation.*;
 /** se define la clase */
 //import gifAnimation.*;
 class Escenario {
@@ -9,7 +8,7 @@ class Escenario {
   private PImage vida;
   private int puntaje;
   private int contadorVida ;
-  private Gif animation;
+  
   /**-------Zona de Contructores-----*/
 
 
@@ -19,14 +18,11 @@ class Escenario {
     this.vida= loadImage("Data/Sprites/Vida.png");
     vida.resize(60, 60);
     contadorVida = 3;
-    
   }
-  public void mostrarEscenario() {
-  }
+  
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
-  public void display() {
-  }
+ 
   public void mostrarPuntaje() {
     textSize(30);
     fill(#FFFFFF);
@@ -42,7 +38,7 @@ class Escenario {
   public void mostrarNivel() {
     
     if (getEstado()==2) {
-      
+     
       imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
      imagen.resize(width, height);
       background(imagen);
@@ -68,9 +64,7 @@ class Escenario {
       fill(255, 0, 0);
     }
      rect(50, 50, jefe.getVida(), 30);
-   /*  if(jefe.getVida()==0){
-      win.play();
-     }*/
+  
   }
   
   /*--------Metodos accesores---------*/

@@ -47,9 +47,9 @@ class ListaDisparos {
           }
 
           if (existeColision) {
-    //        Explosion unaExplosion = new Explosion((int)jefe.getPosicion().x,(int)jefe.getPosicion().y);
+            Explosion unaExplosion = new Explosion((int)d.getPosicion().x,(int)d.getPosicion().y-20);
             //unaExplosion.display();
-      //      explosiones.add(unaExplosion);
+           explosiones.add(unaExplosion);
             disparos.remove(d);
             jefe.setVida(jefe.getVida()-5);
           }

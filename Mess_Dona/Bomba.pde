@@ -40,9 +40,6 @@ class Bomba extends FrameObject{
     this.posicion.add(this.velocidad);
   }
 
-  public void validar(){
-
-  }
   
   /*--------Metodos accesores---------*/
   /** se colocan los metodos accesores*/ 

@@ -25,7 +25,6 @@ class Avion extends FrameObject{
   public void mover(){
     this.posicion.add(this.velocidad);
   }
-  public void explotar (Dron dron){
-  }
+  
  
 }
