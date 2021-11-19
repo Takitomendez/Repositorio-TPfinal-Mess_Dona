@@ -55,7 +55,7 @@ class ListaDisparos {
         Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);
         explosiones.add(unaExplosion);
         disparos.remove(d);
-        jefe.setVida(jefe.getVida()-3);
+        jefe.setVida(jefe.getVida()-1);
       }
     }
   }

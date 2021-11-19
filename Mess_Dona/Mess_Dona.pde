@@ -105,6 +105,10 @@ public void draw() {
     if(random(100)>=90){
       listaAviones.agregarAvion(new Avion());
     }
+    for(int i=0;i<explosiones.size();i++){
+      Explosion e = explosiones.get(i);
+      e.display();
+    }
   }
   if(escenario.getPuntaje()==25){
    estado = 3;
@@ -140,6 +144,7 @@ public void draw() {
     textAlign(CENTER);
     textSize(30);
     fill(#FFFFFF);
+    cont=28;
   }
   
   
@@ -177,7 +182,7 @@ public void keyPressed() {
     jefe.setVida(900);
     listaBombas = new ListaBombas();
     sonido.rewind();
-  //  sonido.play();
+    sonido.play();
     win.pause();
     win.rewind();
     gameover.pause();
