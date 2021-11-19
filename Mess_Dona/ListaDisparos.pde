@@ -1,10 +1,13 @@
 /** Clase que gestiona los disparos realizados*/
 class ListaDisparos {
   private ArrayList<Disparo> disparos;
-
-  public ListaDisparos() {
+  
+/**------Zona de constructores-----------*/
+  public ListaDisparos() {     //construtor por Defecto
     this.disparos = new ArrayList();
   }
+  /**---------Zona de Metodos------------*/
+  
   /** Elimina un disparo de la lista de disparos cuando 
    el recorrido llega a la parte superior de la pantalla
    @ d: es el disparo que se evaluará si ha llegado a la parte superior*/
@@ -46,18 +49,18 @@ class ListaDisparos {
             existeColision = false;
           }
 
-          if (existeColision) {
+          if (existeColision) {         //verifica si hay colision
     //        Explosion unaExplosion = new Explosion((int)jefe.getPosicion().x,(int)jefe.getPosicion().y);
             //unaExplosion.display();
       //      explosiones.add(unaExplosion);
             disparos.remove(d);
-            jefe.setVida(jefe.getVida()-5);
+            jefe.setVida(jefe.getVida()-5);     //disminuye en 5 la vida del jefe
           }
         }
       
     }
 
-
+/**--------Zona de Metodos Accesores----------*/
   public ArrayList<Disparo> getDisparos() {
     return this.disparos;
   }

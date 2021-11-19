@@ -1,11 +1,17 @@
+/**Se define la clase Explosion que hereda atributos de FrameObject*/
 class Explosion extends FrameObject{
+  
+  /**------Atributos de la clase----------*/
+  
   private int cantFrames;    //la cantidad de veces que se mostrarán frames
   private int contFrames;    //contador de frames visualizados
   private int posicionX;
   private int posicionY;
-
-  public Explosion(int posicionX) {
-    sprite = requestImage("Data/Sprites/explosion_bomba.png");
+  
+ /**------------Zona de constructores-------------*/
+ 
+  public Explosion(int posicionX) {       //Constructor parametrizado 
+    sprite = requestImage("Data/Sprites/explosion_bomba.png"); // carga la imagen desde Data
     widthFrame = 64;
     heightFrame = 64;
     posXFrame=0;
@@ -15,8 +21,9 @@ class Explosion extends FrameObject{
     this.posicionX = posicionX;
     this.posicionY = height-heightFrame/2;
   }
+/**-------------Zona de Métodos------------*/
 
-  public void display() {
+  public void display() {    //Dibuja a la explosion en el lienzo
     imageMode(CENTER);
     if (contFrames <= cantFrames) {
       

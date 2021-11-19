@@ -1,4 +1,7 @@
+/** se define la clase Dispara que hereda atributos de la clase FrameObject */
 class Disparo extends FrameObject{
+  
+  /**-----------Zona de constructores--------*/
   
   public Disparo(PVector posicion, PVector velocidad){
     sprite = requestImage("Data/Sprites/shoot4.png");
@@ -9,8 +12,9 @@ class Disparo extends FrameObject{
     this.posXFrame = 156*3;
     this.posYFrame = 0;
   }
+  /**---------Zona de Metodos----------*/
   
-  public void display(){
+  public void display(){  //dibuja a los disparos en el lienzo
     PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);
     frame.resize(20,50);
     imageMode(CENTER);

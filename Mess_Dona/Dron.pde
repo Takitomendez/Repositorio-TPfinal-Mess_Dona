@@ -1,12 +1,12 @@
-/** se define la clase */
+/** se define la clase Dron que hereda atributos de la clase FrameObject */
 class Dron extends FrameObject {
-  private int tipo;
+
 
   /* ------Zona de atributos---------*/
-  /** Se colocan los tributos de la clase*/
+  private int tipo;
 
-  /** constructor parametrizado*/
-  public Dron(int tipo) {
+  /**-------- Zona de constructores------------*/
+  public Dron(int tipo) {           //Constructor parametrizado
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron.png");
     this.posicion = new PVector(width/2, height-150);
     this.widthFrame = 75;
@@ -18,7 +18,7 @@ class Dron extends FrameObject {
     sprite.resize(75, 268);
   }
   
-  public Dron() {
+  public Dron() {          //Constructor por defecto 
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n2.png");
     this.posicion = new PVector(width-150, height/2);
     this.widthFrame = 105;
@@ -30,8 +30,9 @@ class Dron extends FrameObject {
 
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
-  public void display() {
-    if(tipo==1){
+  public void display() {   //Dibuja al Dron en el Lienzo
+
+    if(tipo==1){          //condicionales para Dron tipo 1
       if(estado){
        imageMode(CENTER);
        PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);
@@ -43,18 +44,18 @@ class Dron extends FrameObject {
        image(frame,this.posicion.x,this.posicion.y);
       }
     }
-    if(tipo==3){
+    if(tipo==3){         //Condicional para dron tipo 3
       imageMode(CENTER);
       PImage frame = sprite.get(this.posXFrame+14,this.posYFrame+153,this.widthFrame-14,this.heightFrame-38);
       image(frame,this.posicion.x,this.posicion.y);
       
-    }if(tipo==2){
+    }if(tipo==2){        //condicional para dron tipo 4
       imageMode(CENTER);
       image(this.sprite, this.posicion.x, this.posicion.y, this.widthFrame, this.heightFrame);
     }
   }
 
-  public void mover() {
+  public void mover() {    //permite al dron moverse dependiendo del tipo
     if(tipo==3){
       this.posicion.x = mouseX;
       this.posicion.y = mouseY;
@@ -66,7 +67,7 @@ class Dron extends FrameObject {
     }
   }
   
-  public void disparar(ArrayList<Disparo> disparos){
+  public void disparar(ArrayList<Disparo> disparos){    //permite al dron realizar disparos 
     if(mousePressed && mouseButton == LEFT){
       PVector pos = new PVector(this.posicion.x,this.posicion.y);
       
@@ -75,7 +76,7 @@ class Dron extends FrameObject {
     }
   }
   
-  public void collide(Jefe circle){
+  public void collide(Jefe circle){        //Evalua la colision entre circulo y rectangulo.
     boolean isColliding = false;
     // find the nearest point bettwen the rectangle and the circle
     // first this point using the position of circle
@@ -97,7 +98,7 @@ class Dron extends FrameObject {
     
     float distance = nearestPoint.dist(circle.getPosicion());
     
-    if(distance <= circle.getWidthFrame()/2){
+    if(distance <= circle.getWidthFrame()/2){       //verifica si existe colision
       isColliding = true;
       escenario.setContadorVida(escenario.getContadorVida()-1);
     }

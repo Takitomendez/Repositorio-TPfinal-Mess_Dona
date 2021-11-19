@@ -1,35 +1,40 @@
-/** se define la clase */
+/** se define la clase ListaBombas */
 class ListaBombas{
+  
   /**Atributo de ListaBombas*/
   private ArrayList<Bomba>bombas;
   private boolean band = false;
   private boolean colision = false;
+  
   /**----Zona de contructor----*/
   
-  public ListaBombas(){
+  public ListaBombas(){      //constructor por defecto
     this.bombas= new ArrayList();
     for (int i=0; i<=30;i++){
       Bomba b=new Bomba();
       agregarBomba(b);
     }
   }
-  public void agregarBomba(Bomba unaBomba){
+  
+  /**------------Zona de Métodos----------*/
+  
+  public void agregarBomba(Bomba unaBomba){      //agrega una bomba a la listaBombas
     bombas.add(unaBomba);
   }
   
-  public void evaluarEliminarBomba(Bomba b, ArrayList<Explosion> explosiones, Escenario vida) {
+  public void evaluarEliminarBomba(Bomba b, ArrayList<Explosion> explosiones, Escenario vida) {    //evalua la aeliminacion de la bomba
     this.band=false;
     if (b.getPosicion().y > height) {
-      Explosion unaExplosion = new Explosion((int)b.getPosicion().x);
+      Explosion unaExplosion = new Explosion((int)b.getPosicion().x);   //crea un objeto de la clase Explosion
       explosiones.add(unaExplosion);
       bombas.remove(b);
-      vida.setContadorVida(vida.getContadorVida() - 1);
+      vida.setContadorVida(vida.getContadorVida() - 1);         //si hay explosion se descuenta una vida 
       this.band=true;
     }
    
   }
   
-  public void displayBombas( ArrayList<Explosion> explosiones, Escenario vida, int i) {
+  public void displayBombas( ArrayList<Explosion> explosiones, Escenario vida, int i) {  //dibuja a las bombas de la lista
     Bomba b = bombas.get(i);
     b.display();
     evaluarEliminarBomba(b,explosiones, vida);
@@ -42,7 +47,7 @@ class ListaBombas{
   }
   
   
-  public void validarImpacto(Dron dron) {
+  public void validarImpacto(Dron dron) {     //evalua la colision entre dron y bomba
     for (int i=0; i<bombas.size(); i++) {
       Bomba b = bombas.get(i);
       boolean isColliding = true;
@@ -65,10 +70,10 @@ class ListaBombas{
         dron.setEstado(false);
       }
 
-      if (isColliding) {
+      if (isColliding) {     //verifica si existe colision
         bombas.remove(b);
-        setCont(getCont()-1);
-        escenario.setPuntaje(escenario.getPuntaje() + 1);
+        setCont(getCont()-1);        
+        escenario.setPuntaje(escenario.getPuntaje() + 1);  //suma uno al puntaje
         colision=true;
         dron.setEstado(true);
         }
@@ -82,6 +87,7 @@ class ListaBombas{
     }  
   }*/
   
+  /**-----------Zona de Metodos Accesores------------*/
   
   public boolean getBandera(){
     return this.band;
@@ -95,5 +101,4 @@ class ListaBombas{
   public ArrayList<Bomba> getBombas(){
     return this.bombas;
   }
-// ver operaciones de agregar y remover
 }
