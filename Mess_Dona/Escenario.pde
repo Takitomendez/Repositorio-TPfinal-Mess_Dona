@@ -37,16 +37,19 @@ class Escenario {
     text(contadorVida, width/10, height/20);
   }
   public void mostrarNivel() {
+    
     if (getEstado()==2) {
       imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
       imagen.resize(width, height);
       background(imagen);
     }
+    
     if (getEstado()==3) {
       imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
       imagen.resize(width, height);
       background(imagen);
     }
+    
     if (getEstado()==4) {
       imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
       imagen.resize(width, height);
