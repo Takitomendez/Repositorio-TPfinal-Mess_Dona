@@ -29,14 +29,12 @@ class Escenario {
     fill(#FFFFFF);
     textAlign(CENTER);
     text("PUNTAJE: " + puntaje, width/2, height/30);
-    
   }
   public void mostrarVida() {
     text("Vida: ", width/25, height/25);
     image(vida, width/10, height/30);
     fill(#050505);
     text(contadorVida, width/10, height/20);
-  
   }
   public void mostrarNivel() {
     if (getEstado()==2) {
@@ -49,20 +47,21 @@ class Escenario {
       imagen.resize(width, height);
       background(imagen);
     }
-      if (getEstado()==4) {
-        imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
-        imagen.resize(width, height);
-        background(imagen);
+    if (getEstado()==4) {
+      imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
+      imagen.resize(width, height);
+      background(imagen);
     }
   }
-  
-  public void mostrarVidaJefe(Jefe jefe){
-    fill(255,0,0);
-    rect(20,20,jefe.getVida(),30);
+
+  public void mostrarVidaJefe(Jefe jefe) {
+    if (jefe.getVida()>=450) {
+      fill(#12CB02);
+    } else {
+      fill(255, 0, 0);
+    }
+     rect(50, 50, jefe.getVida(), 30);
   }
-  
-  
-  
   /*--------Metodos accesores---------*/
 
   /** se colocan los metodos accesores */
