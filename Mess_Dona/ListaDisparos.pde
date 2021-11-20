@@ -2,7 +2,7 @@
 
 class ListaDisparos {
   
-  private ArrayList<Disparo> disparos;
+  private ArrayList<Disparo> disparos; //crea una variable del tipo array de disparos
   
  
 /**------Zona de constructores-----------*/
@@ -13,8 +13,7 @@ class ListaDisparos {
   /**---------Zona de Metodos------------*/
 
   /** Elimina un disparo de la lista de disparos cuando
-
-   el recorrido llega a la parte superior de la pantalla
+   el recorrido de un disparo llega a la parte superior de la pantalla
    @ d: es el disparo que se evaluará si ha llegado a la parte superior*/
   public void evaluarEliminarDisparo(Disparo d) { 
     if (d.getPosicion().y < 0) {
@@ -27,26 +26,25 @@ class ListaDisparos {
     for (int i=0; i<disparos.size(); i++) {
       Disparo d = disparos.get(i);
       d.display();
-
-      evaluarEliminarDisparo(d);
+      evaluarEliminarDisparo(d);//llama al método evaluarEliminarDisparo()
     }
   }
 
-  /** Verifica si hay un disparo colisiona con una nave de a flota*/
+  /** Verifica si un disparo colisiona con el Jefe*/
   public void validarImpacto(Jefe jefe, ArrayList<Explosion> explosiones) {
     for (int i=0; i<disparos.size(); i++) {
       Disparo d = disparos.get(i);
-      // find the nearest point bettwen the rectangle and the circle
-      // first this point using the position of circle
+      // Encuentra el punto más cercano entre el disparo y el Jefe
+      //crea primero este punto usando la posición del Jefe
       PVector nearestPoint = new PVector(jefe.getPosicion().x, jefe.getPosicion().y);
-      // update the x component of the neares point to ends of the rectangle on x axis
+      // actualiza el componente x del punto más cercano a los extremos del disparo en el eje x
       if (nearestPoint.x < d.posicion.x) {
         nearestPoint.x = d.posicion.x;
       }
       if (nearestPoint.x > d.posicion.x+d.widthFrame) {
         nearestPoint.x = d.posicion.x+d.widthFrame;
       }
-      // update the y component of the neares point to ends of the rectangle on y axis
+      // actualiza el componente y del punto más cercano a los extremos del disparo en el eje y
       if (nearestPoint.y < d.posicion.y) {
         nearestPoint.y = d.posicion.y;
       }
@@ -54,14 +52,13 @@ class ListaDisparos {
         nearestPoint.y = d.posicion.y+d.heightFrame;
       }
 
-      float distance = nearestPoint.dist(jefe.getPosicion());
+      float distance = nearestPoint.dist(jefe.getPosicion());// calcula la distancia
 
-
-      if (distance <= jefe.getWidthFrame()/2 - 20) {
-        Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);
-        explosiones.add(unaExplosion);
-        disparos.remove(d);
-        jefe.setVida(jefe.getVida()-5);
+      if (distance <= jefe.getWidthFrame()/2 - 20) { //evalúa si la distancia es menor o igual a la mitad del ancho del jefe
+        Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);//crea una nueva explosión
+        explosiones.add(unaExplosion);//añade una explosión a la lista de explosiones
+        disparos.remove(d); //elimina un disparo
+        jefe.setVida(jefe.getVida()-5); //resta la vida al jefe
       }
 
     }

@@ -72,8 +72,7 @@ class Escenario {
      rect(30, 50, jefe.getVida(), 30); // se crea una recta 
   
   }
-   
-  
+
   /*--------Metodos accesores---------*/
 
   /** se colocan los metodos accesores */

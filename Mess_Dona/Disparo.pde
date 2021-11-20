@@ -18,17 +18,17 @@ class Disparo extends FrameObject{
     PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);  // establece la posicion del frame del sprite
     frame.resize(20,50);                                        // se cambia el tamaño del frame
     imageMode(CENTER);                                        //  Alinea en el centro el texto
-    image(frame,this.posicion.x,this.posicion.y);            // muestra la imagen en el lienzo
-    if(this.posYFrame < sprite.height-this.heightFrame){    // se ejecuta una condicion 
+    image(frame,this.posicion.x,this.posicion.y);            // se establece la imagen en el lienzo
+    if(this.posYFrame < sprite.height-this.heightFrame){    //permite cambiar la posicion del frame 
       posYFrame+=this.heightFrame;                         // se aumenta el valor de la posicion y del frame
     }else{
-      posYFrame=0;                              // se estable el valor de posicion de y si la condicion nos es vedadera
+      posYFrame=0;                               //regresa al primer frame en el eje y
     }
     move();                                    // se llama al metodo move
   }
               
   public void move(){                        // cambia la posicion del disparo en el escenario
-    this.posicion.add(velocidad);           // se suman los PVectores
+    this.posicion.add(velocidad);           //mueve la posicion con respecto a la velocidad 
   }
 
 }
