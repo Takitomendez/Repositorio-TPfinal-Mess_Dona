@@ -1,4 +1,4 @@
-//import gifAnimation.*;
+
 
 /** se define la clase Escenario */
 class Escenario {

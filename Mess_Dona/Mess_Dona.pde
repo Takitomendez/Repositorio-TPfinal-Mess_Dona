@@ -1,5 +1,4 @@
 
-//import gifAnimation.*;
 import ddf.minim.*;  //importa la biblioteca minim
 import processing.sound.*; // importa la biblioteca sound
 import gifAnimation.*;

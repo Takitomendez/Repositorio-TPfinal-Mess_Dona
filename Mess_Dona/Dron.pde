@@ -1,5 +1,5 @@
 
-//import ddf.minim.*;
+
 /** se define la clase Dron que hereda atributos de la clase FrameObject */
 class Dron extends FrameObject {
 
