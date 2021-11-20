@@ -10,7 +10,7 @@ class FrameObject extends GameObject{
   public FrameObject(){  //constructor por defecto
   }
   /**-------Zona de metodos---------*/
-  public void display(){ 
+  public void display(){  // 
 
   }
   /**---------Metodos Accesores---------*/
