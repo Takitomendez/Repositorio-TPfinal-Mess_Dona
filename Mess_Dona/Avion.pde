@@ -16,14 +16,14 @@ class Avion extends FrameObject{
   
  /*--------Zona de operaciones-------*/
  /** se definen las operaciones a realizar */
-  public void display(){         //
-    imageMode(CENTER);           //
-    image(sprite,posicion.x,posicion.y);
-    mover();
+  public void display(){         //dibuja al avion en el lienzo
+    imageMode(CENTER);           //establece la posicion del eje en el centro
+    image(sprite,posicion.x,posicion.y);  //establece la posicion en el sprite 
+    mover();  //permite moverse
 
   }
-  public void mover(){
-    this.posicion.add(this.velocidad);
+  public void mover(){   // permite mover al avion
+    this.posicion.add(this.velocidad);         //modifica la posicion del avion con respecto a la velocidad
   }
   
  
