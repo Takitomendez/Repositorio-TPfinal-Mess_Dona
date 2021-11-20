@@ -36,8 +36,6 @@ class ListaDisparos {
   public void validarImpacto(Jefe jefe, ArrayList<Explosion> explosiones) {
     for (int i=0; i<disparos.size(); i++) {
       Disparo d = disparos.get(i);
-
-      boolean isColliding = false;
       // find the nearest point bettwen the rectangle and the circle
       // first this point using the position of circle
       PVector nearestPoint = new PVector(jefe.getPosicion().x, jefe.getPosicion().y);
@@ -60,7 +58,6 @@ class ListaDisparos {
 
 
       if (distance <= jefe.getWidthFrame()/2 - 20) {
-        isColliding = true;
         Explosion unaExplosion = new Explosion((int)d.getPosicion().x, (int)d.getPosicion().y-20);
         explosiones.add(unaExplosion);
         disparos.remove(d);
