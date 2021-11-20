@@ -9,7 +9,10 @@ AudioPlayer win;       //crea un objeto de la biblioteca AudioPlayer
 AudioPlayer gameover;  //crea un objeto de la biblioteca AudioPlayer
 Minim minim;           //crea un objeto de la biblioteca Minim
 AudioPlayer shoot;
-Gif animation; 
+Gif animation;
+Gif nivel1;
+Gif nivel2;
+Gif nivel3;
 Dron dron;         //crea un objeto de la clase Dron
 Dron dron2;        // crea un objeto de la clase dron tipo 2
 Dron dron3;        // crea un objeto de la calse dron tipo 3
@@ -35,7 +38,12 @@ private ListaAviones listaAviones;
 
 public void setup() {
   size(1100,762); 
-  
+  nivel1= new Gif(this,"fondo-selva.gif");
+  nivel1.play();
+  nivel2= new Gif(this,"fondo-cielo.gif");
+  nivel2.play();
+  nivel3= new Gif(this,"giphy.gif");
+  nivel3.play();
   animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
   animation.play();
   minim = new Minim(this);
@@ -142,7 +150,8 @@ public void draw() {
 
   if (estado ==5) {     //dibuja el contenido en caso de Victoria
 
-    background (animation);
+ //   background (animation);
+    escenario.mostrarNivel();
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);

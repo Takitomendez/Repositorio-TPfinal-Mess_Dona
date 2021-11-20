@@ -40,23 +40,20 @@ class Escenario {
   public void mostrarNivel() {      //muestra el nivel en el escenario
     
     if (getEstado()==2) {
-     
-      imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
-     imagen.resize(width, height);
-      background(imagen);
+      background(nivel1);
     }
     
     if (getEstado()==3) {
-      imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
-      imagen.resize(width, height);
-      background(imagen);
+      background(nivel2);
     }
     
     if (getEstado()==4) {
-      imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
-      imagen.resize(width, height);
-      background(imagen);
+      background(nivel3);
     }
+    if (getEstado()==5) {
+      background(animation);
+    }
+    
   }
 
   public void mostrarVidaJefe(Jefe jefe) {   //muestra la vida del jefe en el escenario
