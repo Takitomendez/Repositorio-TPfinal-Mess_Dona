@@ -72,9 +72,7 @@ class Escenario {
      rect(30, 50, jefe.getVida(), 30);
   
   }
-    public void mostrarEscenario() {          //muestra al escenario
-  }
-  
+
   /*--------Metodos accesores---------*/
 
   /** se colocan los metodos accesores */

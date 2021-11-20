@@ -14,7 +14,6 @@ class Explosion extends FrameObject{
 
   public Explosion(int posX) {   //constructor parametrizado
     sprite = requestImage("Data/Sprites/explosion_bomba.png"); // carga la imagen desde Data
- 
     widthFrame = 64;
     heightFrame = 64;
     posXFrame=0;
@@ -24,8 +23,6 @@ class Explosion extends FrameObject{
     this.posicionX = posX;
     this.posicionY = height-heightFrame/2;
   }
-
-/**-------------Zona de Métodos------------*/
 
   public Explosion(int posX, int posY) {
     sprite = requestImage("Data/Sprites/explosion_bomba.png");
@@ -39,13 +36,11 @@ class Explosion extends FrameObject{
     this.posicionY = posY;
   }
 
-
+/**-------------Zona de Métodos------------*/
   public void display() {    //Dibuja a la explosion en el lienzo
     imageMode(CENTER);
     if (contFrames <= cantFrames) {
-      
-      image(sprite.get(posXFrame, posYFrame, widthFrame, heightFrame), posicionX, posicionY);
-      
+      image(sprite.get(posXFrame, posYFrame, widthFrame, heightFrame), posicionX, posicionY);  
       posXFrame = posXFrame + widthFrame;
       contFrames++;
       if (posXFrame >= sprite.width) {

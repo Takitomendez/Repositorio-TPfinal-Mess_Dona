@@ -104,7 +104,7 @@ public void draw() {
     escenario.mostrarVida(); // Muestra la vida del dron
     dron2.display(); // Llama al metodo display de la clase dron
     dron2.mover(); // Llama al metodo mover de la clase dron
-    listaAviones.displayAviones( escenario); // Llama el metodo display de la clase listaAviones 
+    listaAviones.displayAviones(); // Llama el metodo display de la clase listaAviones 
     listaAviones.validarImpacto(explosiones,dron2); // llama el metodo validarImpacto de la clase listaAviones
     if(random(100)>=90){ 
       listaAviones.agregarAvion(new Avion()); // crea un nuevo avion
