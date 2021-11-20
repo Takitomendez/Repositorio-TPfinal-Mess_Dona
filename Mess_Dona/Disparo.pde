@@ -4,7 +4,7 @@ class Disparo extends FrameObject{
   /**-----------Zona de constructores--------*/
   
   public Disparo(PVector posicion, PVector velocidad){    //establece la posicion y velocidad del disparo
-    sprite = requestImage("Data/Sprites/shoot4.png");    //se caarga la imagen del sprite
+    sprite = requestImage("Data/Sprites/shoot4.png");    //se carga la imagen del sprite
     this.posicion = posicion;         // se define el valor de la posicion
     this.velocidad = velocidad;      // se define el valor de la velocidad
     this.widthFrame = 172;           // se define el ancho del frame
@@ -27,7 +27,7 @@ class Disparo extends FrameObject{
     move();                                    // se llama al metodo move
   }
               
-  public void move(){                        // cambia la posicion del disparo
+  public void move(){                        // cambia la posicion del disparo en el escenario
     this.posicion.add(velocidad);           // se suman los PVectores
   }
 
