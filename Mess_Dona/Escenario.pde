@@ -1,5 +1,6 @@
-/** se define la clase */
 //import gifAnimation.*;
+
+/** se define la clase Escenario */
 class Escenario {
 
   /* ------Zona de atributos---------*/
@@ -8,34 +9,35 @@ class Escenario {
   private PImage vida;
   private int puntaje;
   private int contadorVida ;
+
   
   /**-------Zona de Contructores-----*/
 
-
-
-  public Escenario() {
+  public Escenario() {      //constructor pr defecto
     this.puntaje=0;
     this.vida= loadImage("Data/Sprites/Vida.png");
     vida.resize(60, 60);
     contadorVida = 3;
   }
+
   
   /*--------Zona de operaciones-------*/
   /** se definen las operaciones a realizar */
  
-  public void mostrarPuntaje() {
+  public void mostrarPuntaje() {   // muestra el puntaje con el escenario
+
     textSize(30);
     fill(#FFFFFF);
     textAlign(CENTER);
     text("PUNTAJE: " + puntaje, width/2, height/30);
   }
-  public void mostrarVida() {
+  public void mostrarVida() {       //muestra la vida del dron con el escenario
     text("Vida: ", width/25, height/25);
     image(vida, width/10, height/30);
     fill(#050505);
     text(contadorVida, width/10, height/20);
   }
-  public void mostrarNivel() {
+  public void mostrarNivel() {      //muestra el nivel en el escenario
     
     if (getEstado()==2) {
      
@@ -57,7 +59,7 @@ class Escenario {
     }
   }
 
-  public void mostrarVidaJefe(Jefe jefe) {
+  public void mostrarVidaJefe(Jefe jefe) {   //muestra la vida del jefe en el escenario
     if (jefe.getVida()>=450) {
       fill(#12CB02);
     } else {
@@ -65,6 +67,8 @@ class Escenario {
     }
      rect(50, 50, jefe.getVida(), 30);
   
+  }
+    public void mostrarEscenario() {          //muestra al escenario
   }
   
   /*--------Metodos accesores---------*/

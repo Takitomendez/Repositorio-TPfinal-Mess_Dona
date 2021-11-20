@@ -1,23 +1,27 @@
 
+//import gifAnimation.*;
+import ddf.minim.*;  //importa la biblioteca minim
+import processing.sound.*; // importa la biblioteca sound
 import gifAnimation.*;
-import ddf.minim.*;
+
+AudioPlayer sonido;    //crea un objeto de la biblioteca AudioPlayer
+AudioPlayer win;       //crea un objeto de la biblioteca AudioPlayer 
+AudioPlayer gameover;  //crea un objeto de la biblioteca AudioPlayer
+Minim minim;           //crea un objeto de la biblioteca Minim
 
 
-AudioPlayer sonido;
-AudioPlayer win;
-AudioPlayer gameover;
-Minim minim;
 
 Gif animation; 
 
-Dron dron;
-Dron dron2;
-Dron dron3;
-Escenario escenario;
-ListaDisparos listDisparos;
-Jefe jefe;
 
-int tiempoBomba =200;
+Dron dron;         //crea un objeto de la clase Dron
+Dron dron2;        // crea un objeto de la clase dron tipo 2
+Dron dron3;        // crea un objeto de la calse dron tipo 3
+Escenario escenario;     //creal al objeto del escenario
+ListaDisparos listDisparos;   //crea la lista de disparos
+Jefe jefe;    //crea al objeto jefe
+
+int tiempoBomba =200;       
 int contador=1;
 int timePlane=25;
 int cont=28;
@@ -29,7 +33,10 @@ ArrayList<Explosion> explosiones;
 private ListaAviones listaAviones;
 
 //private ListaAviones listaAvionesB;
-/** Se establece la configuracion inicial*/
+
+
+/**----------- Se establece la configuracion inicial------------*/
+
 public void setup() {
   size(1100,762); 
   
@@ -56,11 +63,12 @@ public void setup() {
   listDisparos = new ListaDisparos();
   jefe = new Jefe();
 }
-/** Se dibuja el sketch*/
+
+/** -----------Se dibuja el sketch------------*/
 public void draw() { 
   
   
-  if (estado==1) { 
+  if (estado==1) {     //dibuja la introduccion del juego
     
     imagen = loadImage("Data/Sprites/LOGO2.png");
     imagen.resize(width, height);
@@ -71,13 +79,13 @@ public void draw() {
     textSize(30);
     fill(#FFFFFF);
   }
-  if(estado==5 || estado==6){
+  if(estado==5 || estado==6){       //si se gana o se pierde la musica se detendrá
   
   sonido.pause();
   }
   
   
-  if (estado ==2) {
+  if (estado ==2) {                 //dibuja el contenido para el nivel 1
     escenario.mostrarNivel();
     escenario.mostrarPuntaje();
     escenario.mostrarVida();
@@ -94,7 +102,7 @@ public void draw() {
     }
   }
   
-  if ( estado==3) {
+  if ( estado==3) {         // dibuja el contenido del nivel 2
     escenario.mostrarNivel();
     escenario.mostrarPuntaje();
     escenario.mostrarVida();
@@ -113,7 +121,7 @@ public void draw() {
   if(escenario.getPuntaje()==25){
    estado = 3;
   }
-  if (estado==4) {
+  if (estado==4) {             //dibjua el contenido para el nivel 3
     escenario.mostrarNivel();
     escenario.mostrarPuntaje();
     escenario.mostrarVida();
@@ -136,7 +144,8 @@ public void draw() {
   }
   
   
-  if (estado ==5) {
+
+  if (estado ==5) {     //dibuja el contenido en caso de Victoria
 
     background (animation);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
@@ -148,7 +157,7 @@ public void draw() {
   }
   
   
-  if (estado==6) {
+  if (estado==6) {    //se dibuja el contenido en caso de GameOver
  
     imagen = loadImage("Data/Sprites/Game Over.png");
     imagen.resize(width, height);
@@ -174,7 +183,7 @@ public void draw() {
 }
 
 
-public void keyPressed() {
+public void keyPressed() {     // establece la configuracion para el uso de teclas
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
     estado = MaquinaEstado.Nivel_1;
     escenario.setContadorVida(3);
@@ -189,7 +198,7 @@ public void keyPressed() {
     gameover.rewind();
   }
 }
-
+/**  Metodos Accesores  */
 public void setCont(int cont){
     this.cont=cont;
   }

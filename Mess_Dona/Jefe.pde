@@ -1,6 +1,5 @@
-/** se define la clase */
+/** se define la clase Jefe que hereda atributos de FrameObject*/
 class Jefe extends FrameObject{
-  
   
    /* ------Zona de atributos---------*/
    /** Se colocan los tributos de la clase*/
@@ -8,8 +7,8 @@ class Jefe extends FrameObject{
   
   /**------Zona de constructores--------*/
  
-  public Jefe(){
-    this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo2-enemigo.png");
+  public Jefe(){  //cocntructor por defecto
+    this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo2-enemigo.png"); //carga la imagen desde Data para el sprite
     this.velocidad= new PVector(5,5);
     this.widthFrame= 330;
     this.heightFrame=330;
@@ -40,7 +39,7 @@ class Jefe extends FrameObject{
       posX=0;
     }
   }
-  public void display(){
+  public void display(){  //dibuja al enemigo en el lienzo
     PImage frame = sprite.get(this.posXFrame,this.posYFrame,this.widthFrame,this.heightFrame);
     imageMode(CENTER);
     image(frame,this.posicion.x,this.posicion.y);
@@ -53,7 +52,7 @@ class Jefe extends FrameObject{
  //   frameRate(10);
   }
   
-  public void mover(){
+  public void mover(){   //permite al jefe moverse
     if (this.posicion.x>=width-this.widthFrame/2 || this.posicion.x<=this.widthFrame/2){
       this.velocidad.x = this.velocidad.x * -1;
     }
