@@ -77,18 +77,17 @@ class Dron extends FrameObject {
   }
 
 
-  public void disparar(ArrayList<Disparo> disparos) {        //permite al dron realizar disparos 
+ public void disparar(ArrayList<Disparo> disparos) {        //permite al dron realizar disparos 
     if (mousePressed && mouseButton == LEFT) {
       PVector pos = new PVector(this.posicion.x, this.posicion.y);
-
       Disparo disparo = new Disparo(pos, new PVector(0, -20));
       disparos.add(disparo);
       shoot.play();
       shoot.rewind();
       
     }
-  }
 
+  }
   public void collide(Jefe circle) {        //Evalua la colision entre circulo y rectangulo.
 
     boolean isColliding = false;
