@@ -21,7 +21,7 @@ class Dron extends FrameObject {
   }
 
   
-  public Dron() {          //Constructor por defecto 
+  public Dron() {  //Constructor por defecto 
 
 
     this.sprite = loadImage("Data/Sprites/DronPrincipal/dron-n2.png");
@@ -77,24 +77,19 @@ class Dron extends FrameObject {
   }
 
 
-  public void disparar(ArrayList<Disparo> disparos) {        //permite al dron realizar disparos 
+ public void disparar(ArrayList<Disparo> disparos) {        //permite al dron realizar disparos 
     if (mousePressed && mouseButton == LEFT) {
       PVector pos = new PVector(this.posicion.x, this.posicion.y);
-
       Disparo disparo = new Disparo(pos, new PVector(0, -20));
       disparos.add(disparo);
       shoot.play();
       shoot.rewind();
       
     }
+
   }
-
-  public void collide(Jefe circle) {        //Evalua la colision entre circulo y rectangulo.
-
-    boolean isColliding = false;
-    // find the nearest point bettwen the rectangle and the circle
-    // first this point using the position of circle
-    PVector nearestPoint = new PVector(circle.getPosicion().x, circle.getPosicion().y);
+  public void collide(Jefe jefe) {        //Evalua la colision entre circulo y rectangulo.
+    PVector nearestPoint = new PVector(jefe.getPosicion().x, jefe.getPosicion().y);
     // update the x component of the neares point to ends of the rectangle on x axis
     if (nearestPoint.x < this.posicion.x) {
       nearestPoint.x = this.posicion.x;
@@ -110,12 +105,10 @@ class Dron extends FrameObject {
       nearestPoint.y = this.posicion.y+this.heightFrame;
     }
 
-    float distance = nearestPoint.dist(circle.getPosicion());
+    float distance = nearestPoint.dist(jefe.getPosicion());
 
 
-    if (distance <= circle.getWidthFrame()/2) {      //verifica si existe colision
-
-      isColliding = true;
+    if (distance <= jefe.getWidthFrame()/2) {      //verifica si existe colision
       escenario.setContadorVida(escenario.getContadorVida()-1);
     }
   }

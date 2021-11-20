@@ -1,6 +1,5 @@
  /**Se define la clase constante MaquinaEstado*/
  class MaquinaEstado{
-
   public static final int Intro = 1;    // establece la constante 1 para la Introduccion
   public static final int Nivel_1 = 2;      // establece la constante 2 para el nivel 1
   public static final int Nivel_2 = 3;         // establece la constante 3 para el nivel2
