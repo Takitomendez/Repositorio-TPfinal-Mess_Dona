@@ -3,7 +3,7 @@ class Bomba extends FrameObject{
   
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
-  private float danio;
+  
 
   
   /**------Zona de constructores--------*/
@@ -43,12 +43,6 @@ class Bomba extends FrameObject{
   
   /*--------Metodos accesores---------*/
   /** se colocan los metodos accesores*/ 
-   public float getDanio(){
-    return this.danio;
-  }
-   public void setDanio (float danio){
-    this.danio = danio;
-  }
   public void setEstado(boolean estado){
     this.estado=estado;
   }

@@ -69,7 +69,7 @@ class ListaAviones {
   
   public void removerAviones(){                  //elimina aviones de la lista
     for(int i= aviones.size()-1;i>=0;i--){
-      if(aviones.get(i).isEstado() == false){
+      if(aviones.get(i).getEstado() == false){
         aviones.remove(i);
       }
     }  

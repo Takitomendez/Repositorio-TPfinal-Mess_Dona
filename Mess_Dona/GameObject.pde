@@ -59,7 +59,7 @@ abstract class GameObject {
   public void setEstado(boolean estado) {
     this.estado=estado;
   }
-  public boolean isEstado() {
+  public boolean getEstado() {
     return this.estado;
   }
 }
