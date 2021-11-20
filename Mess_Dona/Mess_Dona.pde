@@ -8,12 +8,11 @@ AudioPlayer sonido;    //crea un objeto de la biblioteca AudioPlayer
 AudioPlayer win;       //crea un objeto de la biblioteca AudioPlayer 
 AudioPlayer gameover;  //crea un objeto de la biblioteca AudioPlayer
 Minim minim;           //crea un objeto de la biblioteca Minim
-
-
-
-Gif animation; 
-
-
+AudioPlayer shoot;
+Gif animation;
+Gif nivel1;
+Gif nivel2;
+Gif nivel3;
 Dron dron;         //crea un objeto de la clase Dron
 Dron dron2;        // crea un objeto de la clase dron tipo 2
 Dron dron3;        // crea un objeto de la calse dron tipo 3
@@ -39,19 +38,23 @@ private ListaAviones listaAviones;
 
 public void setup() {
   size(1100,762); 
-  
+  nivel1= new Gif(this,"fondo-selva.gif");
+  nivel1.play();
+  nivel2= new Gif(this,"fondo-cielo.gif");
+  nivel2.play();
+  nivel3= new Gif(this,"giphy.gif");
+  nivel3.play();
   animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
-  
   animation.play();
-  
-  
-   minim = new Minim(this);
+  minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   win = minim.loadFile("Data/Victoria.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   gameover = minim.loadFile("Data/Derrota.mp3");
-   sonido.play();
+  minim = new Minim(this);
+  shoot = minim.loadFile("Data/shoot.mpeg");
+  sonido.play();
    
   dron = new Dron(1);
   dron2 = new Dron();
@@ -138,7 +141,7 @@ public void draw() {
       e.display();
     }
   }
-  if(escenario.getPuntaje()==70){
+  if(escenario.getPuntaje()==100){
    estado=4;
    escenario.setPuntaje(0);
   }
@@ -147,7 +150,8 @@ public void draw() {
 
   if (estado ==5) {     //dibuja el contenido en caso de Victoria
 
-    background (animation);
+ //   background (animation);
+    escenario.mostrarNivel();
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
@@ -185,10 +189,10 @@ public void draw() {
 
 public void keyPressed() {     // establece la configuracion para el uso de teclas
   if (keyCode == ENTER && (estado == MaquinaEstado.Intro || estado == MaquinaEstado.VICTORIA || estado == MaquinaEstado.GAME_OVER)){
-    estado = MaquinaEstado.Nivel_1;
+    estado = MaquinaEstado.Nivel_3;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
-    jefe.setVida(900);
+    jefe.setVida(1040);
     listaBombas = new ListaBombas();
     sonido.rewind();
     sonido.play();

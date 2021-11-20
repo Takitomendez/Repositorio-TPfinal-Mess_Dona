@@ -1,9 +1,11 @@
+
+//import ddf.minim.*;
 /** se define la clase Dron que hereda atributos de la clase FrameObject */
 class Dron extends FrameObject {
 
-
   /* ------Zona de atributos---------*/
   private int tipo;
+
 
   /**-------- Zona de constructores------------*/
   public Dron(int tipo) {           //Constructor parametrizado
@@ -81,6 +83,9 @@ class Dron extends FrameObject {
 
       Disparo disparo = new Disparo(pos, new PVector(0, -20));
       disparos.add(disparo);
+      shoot.play();
+      shoot.rewind();
+      
     }
   }
 
