@@ -37,26 +37,30 @@ class Escenario {
     fill(#050505);
     text(contadorVida, width/10, height/20);
   }
-  public void mostrarNivel() {      //muestra el nivel en el escenario
-    
-    if (getEstado()==2) {
-     
-      imagen = loadImage("Data/Sprites/Escenario/fondo-selva.gif");
-     imagen.resize(width, height);
-      background(imagen);
-    }
-    
-    if (getEstado()==3) {
-      imagen = loadImage("Data/Sprites/Escenario/fondo-cielo.gif");
+  public void mostrarNivel(Gif fondo, int estado) {      //muestra el nivel en el escenario
+    if (estado==1){
+      imagen = loadImage("Data/Sprites/LOGO2.png");
       imagen.resize(width, height);
-      background(imagen);
+      background (imagen);
+    }
+    if (estado==2) {
+      background(fondo);
     }
     
-    if (getEstado()==4) {
-      imagen= loadImage("Data/Sprites/Escenario/giphy.gif");
-      imagen.resize(width, height);
-      background(imagen);
+    if (estado==3) {
+      background(fondo);
     }
+    
+    if (estado==4) {
+      background(fondo);
+    }
+    if (estado==5) {
+      background(fondo);
+    }
+    if (estado==6) {
+      background(fondo);
+    }
+    
   }
 
   public void mostrarVidaJefe(Jefe jefe) {   //muestra la vida del jefe en el escenario
@@ -65,7 +69,7 @@ class Escenario {
     } else {
       fill(255, 0, 0);
     }
-     rect(50, 50, jefe.getVida(), 30);
+     rect(30, 50, jefe.getVida(), 30);
   
   }
     public void mostrarEscenario() {          //muestra al escenario

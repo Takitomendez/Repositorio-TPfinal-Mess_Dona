@@ -8,12 +8,12 @@ AudioPlayer sonido;    //crea un objeto de la biblioteca AudioPlayer
 AudioPlayer win;       //crea un objeto de la biblioteca AudioPlayer 
 AudioPlayer gameover;  //crea un objeto de la biblioteca AudioPlayer
 Minim minim;           //crea un objeto de la biblioteca Minim
-
-
-
-Gif animation; 
-
-
+AudioPlayer shoot;
+Gif animation;
+Gif nivel1;
+Gif nivel2;
+Gif nivel3;
+Gif gameOver;
 Dron dron;         //crea un objeto de la clase Dron
 Dron dron2;        // crea un objeto de la clase dron tipo 2
 Dron dron3;        // crea un objeto de la calse dron tipo 3
@@ -39,19 +39,25 @@ private ListaAviones listaAviones;
 
 public void setup() {
   size(1100,762); 
-  
+  nivel1= new Gif(this,"fondo-selva.gif");
+  nivel1.play();
+  nivel2= new Gif(this,"fondo-cielo.gif");
+  nivel2.play();
+  nivel3= new Gif(this,"giphy.gif");
+  nivel3.play();
+  gameOver= new Gif(this,"gameOver.gif");
+  gameOver.play();
   animation = new Gif(this, "malvinas3.gif"); //Se carga el archivo GIF del fondo del lienzo.
-  
   animation.play();
-  
-  
-   minim = new Minim(this);
+  minim = new Minim(this);
   sonido = minim.loadFile("Data/music2.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   win = minim.loadFile("Data/Victoria.mp3");
-   minim = new Minim(this);
+  minim = new Minim(this);
   gameover = minim.loadFile("Data/Derrota.mp3");
-   sonido.play();
+  minim = new Minim(this);
+  shoot = minim.loadFile("Data/shoot.mpeg");
+  sonido.play();
    
   dron = new Dron(1);
   dron2 = new Dron();
@@ -69,10 +75,7 @@ public void draw() {
   
   
   if (estado==1) {     //dibuja la introduccion del juego
-    
-    imagen = loadImage("Data/Sprites/LOGO2.png");
-    imagen.resize(width, height);
-    background (imagen);
+    escenario.mostrarNivel(nivel1,estado);
     text("Utiliza el mouse para mover al dron",width/2,height-650);
     text("Pulsa ENTER para iniciar el juego", width/2, height-50);
     textAlign(CENTER);
@@ -86,7 +89,7 @@ public void draw() {
   
   
   if (estado ==2) {                 //dibuja el contenido para el nivel 1
-    escenario.mostrarNivel();
+    escenario.mostrarNivel(nivel1,estado);
     escenario.mostrarPuntaje();
     escenario.mostrarVida();
     dron.display();
@@ -103,7 +106,7 @@ public void draw() {
   }
   
   if ( estado==3) {         // dibuja el contenido del nivel 2
-    escenario.mostrarNivel();
+    escenario.mostrarNivel(nivel2,estado);
     escenario.mostrarPuntaje();
     escenario.mostrarVida();
     dron2.display();
@@ -122,8 +125,7 @@ public void draw() {
    estado = 3;
   }
   if (estado==4) {             //dibjua el contenido para el nivel 3
-    escenario.mostrarNivel();
-    escenario.mostrarPuntaje();
+    escenario.mostrarNivel(nivel3,estado);
     escenario.mostrarVida();
     escenario.mostrarVidaJefe(jefe);
     jefe.display();
@@ -138,7 +140,7 @@ public void draw() {
       e.display();
     }
   }
-  if(escenario.getPuntaje()==70){
+  if(escenario.getPuntaje()==100){
    estado=4;
    escenario.setPuntaje(0);
   }
@@ -146,8 +148,7 @@ public void draw() {
   
 
   if (estado ==5) {     //dibuja el contenido en caso de Victoria
-
-    background (animation);
+    escenario.mostrarNivel(animation,estado);
     text("LAS MALVINAS SON ARGENTINAS!!!", width/2, height-80);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
@@ -158,10 +159,7 @@ public void draw() {
   
   
   if (estado==6) {    //se dibuja el contenido en caso de GameOver
- 
-    imagen = loadImage("Data/Sprites/Game Over.png");
-    imagen.resize(width, height);
-    background (imagen);
+    escenario.mostrarNivel(gameOver,estado);
     text("PERDISTE!!!", width/2, height-50);
     text("Pulsa ENTER para reiniciar el juego", width/2, height-30);
     textAlign(CENTER);
@@ -188,7 +186,7 @@ public void keyPressed() {     // establece la configuracion para el uso de tecl
     estado = MaquinaEstado.Nivel_1;
     escenario.setContadorVida(3);
     escenario.setPuntaje(0);
-    jefe.setVida(900);
+    jefe.setVida(1040);
     listaBombas = new ListaBombas();
     sonido.rewind();
     sonido.play();
@@ -198,6 +196,7 @@ public void keyPressed() {     // establece la configuracion para el uso de tecl
     gameover.rewind();
   }
 }
+
 /**  Metodos Accesores  */
 public void setCont(int cont){
     this.cont=cont;
@@ -205,7 +204,3 @@ public void setCont(int cont){
  public int getCont(){
     return this.cont;
   }
-
-public int getEstado(){
- return this.estado;
-}
