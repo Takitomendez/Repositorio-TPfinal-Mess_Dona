@@ -1,11 +1,11 @@
 /**Se define la clase frameObject*/
 class FrameObject extends GameObject{
   /**--------Atributos de FrameObject-------*/
-  protected int posXFrame;
-  protected int posYFrame;
-  protected int widthFrame;
-  protected int heightFrame;
-  protected PImage sprite;
+  protected int posXFrame;  // define la posicion en x de los frames
+  protected int posYFrame; // define la posicion en y de los frames
+  protected int widthFrame; // define el ancho de los frames
+  protected int heightFrame; // define el alto de los frames
+  protected PImage sprite; // imprime los Sprite
   /**--------- Zona de constructores---------*/
   public FrameObject(){  //constructor por defecto
   }

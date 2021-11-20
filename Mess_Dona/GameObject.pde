@@ -3,12 +3,12 @@ abstract class GameObject {
 
   /* ------Zona de atributos---------*/
   /** Se colocan los tributos de la clase*/
-  protected PVector posicion;
-  protected int alto;
-  protected int ancho;
-  protected PVector velocidad;
-  protected PImage imagen;
-  protected Boolean estado;
+  protected PVector posicion; // inicia la posicion 
+  protected int alto;  // inica el alto
+  protected int ancho; // inicia el ancho
+  protected PVector velocidad; // inicia la velocidad
+  protected PImage imagen; // inicia la imagen
+  protected Boolean estado; // inicia el estado
 
   /**------Zona de constructores--------*/
 

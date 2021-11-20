@@ -10,7 +10,7 @@ class Jefe extends FrameObject{
 
   public Jefe(){  //constructor por defecto
     this.sprite = loadImage("Data/Sprites/AvionEnemigo/dron-tipo2-enemigo.png"); //carga la imagen desde Data para el sprite
-    this.velocidad= new PVector(5,5);
+    this.velocidad= new PVector(5,5);  
     this.widthFrame= 330;
     this.heightFrame=330;
     this.posicion= new PVector(random(this.widthFrame,width-this.widthFrame*2),random(this.heightFrame,height-this.heightFrame*2));
